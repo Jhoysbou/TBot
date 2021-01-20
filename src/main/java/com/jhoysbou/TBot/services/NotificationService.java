@@ -1,5 +1,8 @@
 package com.jhoysbou.TBot.services;
 
-public interface NotificationService {
-    void sendNotification();
+import org.springframework.stereotype.Service;
+
+@Service
+public class NotificationService {
+
 }

@@ -14,16 +14,6 @@ repositories {
 }
 
 dependencies {
-	compile 'com.vk.api:sdk:1.0.8'
-	
-	compile group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.26'
-	//Binding for Log4J -->
-	compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.11.2'
-
-	//Log4j API and Core implementation required for binding
-	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.2'
-	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.2'
-
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
