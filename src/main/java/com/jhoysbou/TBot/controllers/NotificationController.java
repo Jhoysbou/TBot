@@ -37,6 +37,7 @@ public class NotificationController {
                 log.info("new post event");
                 final ObjectMapper mapper = new ObjectMapper();
                 final NewWallPostEvent event = mapper.convertValue(body, NewWallPostEvent.class);
+                notificationService.sendNotification(event);
                 log.debug("all good");
             }
         }

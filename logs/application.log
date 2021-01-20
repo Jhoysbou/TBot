@@ -12980,3 +12980,8 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 2021-01-21 00:15:04.690 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2021-01-21 00:15:04.691 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
 2021-01-21 00:15:04.726 [http-nio-8080-exec-1] INFO  c.j.T.c.NotificationController - new post event
+2021-01-21 00:17:10.640 [http-nio-8080-exec-3] INFO  c.j.T.c.NotificationController - new post event
+2021-01-21 00:18:35.599 [http-nio-8080-exec-5] INFO  c.j.T.c.NotificationController - new post event
+2021-01-21 00:20:03.561 [http-nio-8080-exec-7] INFO  c.j.T.c.NotificationController - new post event
+2021-01-21 00:20:16.566 [http-nio-8080-exec-9] INFO  c.j.T.c.NotificationController - new post event
+2021-01-21 00:21:49.382 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
