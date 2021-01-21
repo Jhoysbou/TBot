@@ -2,6 +2,7 @@ package com.jhoysbou.TBot.services.VkApi;
 
 import com.jhoysbou.TBot.models.Message;
 import com.jhoysbou.TBot.models.vkmodels.ConversationDAO;
+import com.jhoysbou.TBot.models.vkmodels.ConversationWrapper;
 import com.jhoysbou.TBot.models.vkmodels.UserDAO;
 import com.jhoysbou.TBot.services.VkApi.handlers.ConversationBodyHandler;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +14,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class VKApi implements GroupApi {
@@ -26,7 +28,7 @@ public class VKApi implements GroupApi {
     }
 
     @Override
-    public List<UserDAO> getUsersFromConversations(String accessToken, short count, long offset) throws IOException, InterruptedException {
+    public List<ConversationDAO> getConversations(String accessToken, short count, long offset) throws IOException, InterruptedException {
         final URI uri = URI.create(URL
                 + "messages.getConversations?access_token=" + ACCESS_KEY
                 + "&count=" + count
@@ -37,8 +39,14 @@ public class VKApi implements GroupApi {
                 .uri(uri)
                 .GET()
                 .build();
-        HttpResponse<ConversationDAO> response = client.send(request, new ConversationBodyHandler());
-        return null;
+        HttpResponse<ConversationWrapper> response = client.send(request, new ConversationBodyHandler());
+
+        return response
+                .body()
+                .getItems()
+                .stream()
+                .map(ConversationWrapper.Pair::getConversation)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -46,8 +54,5 @@ public class VKApi implements GroupApi {
 
     }
 
-    private class ConversationWrapper {
-        private long count;
-        private List<>
-    }
+
 }
