@@ -28,7 +28,7 @@ public class DefaultNotificationService implements NotificationService {
         try {
             final ConversationWrapper conversations = api.getConversations((short) 200, 0);
             final long conversationCount = conversations.getCount();
-            log.info("got conversations");
+            log.info("conversationCount = {}, items = {}", conversationCount, conversations.getItems());
 
 
         } catch (IOException | InterruptedException e) {

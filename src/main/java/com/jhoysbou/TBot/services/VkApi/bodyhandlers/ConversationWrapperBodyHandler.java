@@ -1,8 +1,9 @@
-package com.jhoysbou.TBot.services.VkApi.handlers;
+package com.jhoysbou.TBot.services.VkApi.bodyhandlers;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jhoysbou.TBot.models.vkmodels.ConversationDAO;
 import com.jhoysbou.TBot.models.vkmodels.ConversationWrapper;
+import com.jhoysbou.TBot.models.vkmodels.ResponseWrapper;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -19,10 +20,16 @@ public class ConversationWrapperBodyHandler implements HttpResponse.BodyHandler<
                 (String body) -> {
                     try {
                         ObjectMapper objectMapper = new ObjectMapper();
-                        return objectMapper.readValue(body, ConversationWrapper.class);
+                        return objectMapper
+                                .readValue(
+                                        body,
+                                        new TypeReference<ResponseWrapper<ConversationWrapper>>() {}
+                                )
+                                .getResponse();
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
                     }
                 });
     }
+
 }

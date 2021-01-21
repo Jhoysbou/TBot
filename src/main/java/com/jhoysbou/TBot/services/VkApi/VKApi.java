@@ -3,7 +3,7 @@ package com.jhoysbou.TBot.services.VkApi;
 import com.jhoysbou.TBot.models.Message;
 import com.jhoysbou.TBot.models.vkmodels.ConversationWrapper;
 import com.jhoysbou.TBot.models.vkmodels.UserDAO;
-import com.jhoysbou.TBot.services.VkApi.handlers.ConversationWrapperBodyHandler;
+import com.jhoysbou.TBot.services.VkApi.bodyhandlers.ConversationWrapperBodyHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

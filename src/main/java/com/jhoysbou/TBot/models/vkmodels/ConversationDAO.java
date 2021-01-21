@@ -1,9 +1,12 @@
 package com.jhoysbou.TBot.models.vkmodels;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ConversationDAO {
     private long count;
-    private PeerDAO peerDAO;
-    private int can_write;
+    private PeerDAO peer;
+    private CanWrite can_write;
 
     public long getCount() {
         return count;
@@ -14,21 +17,22 @@ public class ConversationDAO {
     }
 
     public PeerDAO getPeer() {
-        return peerDAO;
+        return peer;
     }
 
     public void setPeer(PeerDAO peerDAO) {
-        this.peerDAO = peerDAO;
+        this.peer = peerDAO;
     }
 
-    public int getCan_write() {
+    public CanWrite getCan_write() {
         return can_write;
     }
 
-    public void setCan_write(int can_write) {
+    public void setCan_write(CanWrite can_write) {
         this.can_write = can_write;
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public class PeerDAO {
         private long id;
         private String type;
