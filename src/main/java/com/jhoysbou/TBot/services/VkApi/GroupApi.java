@@ -1,7 +1,6 @@
 package com.jhoysbou.TBot.services.VkApi;
 
 import com.jhoysbou.TBot.models.Message;
-import com.jhoysbou.TBot.models.vkmodels.ConversationDAO;
 import com.jhoysbou.TBot.models.vkmodels.ConversationWrapper;
 import com.jhoysbou.TBot.models.vkmodels.UserDAO;
 
@@ -11,8 +10,8 @@ import java.util.List;
 public interface GroupApi {
 
     /**
-     * @param count Positive number less or equal than 200
-     * @param offset
+     * @param count  Positive number less or equal than 200. Number of conversations to return
+     * @param offset Positive number. Offset needed to return a specific subset of conversations
      * @return
      * @throws IOException
      * @throws InterruptedException
