@@ -9173,7 +9173,7 @@ Unconditional classes:
 2021-01-20 23:50:01.002 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
 2021-01-20 23:50:01.007 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - POST "/api/v1/notification", parameters={}
 2021-01-20 23:50:01.009 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.jhoysbou.TBot.controllers.NotificationController#test(GroupEvent)
-2021-01-20 23:50:01.054 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.jhoysbou.TBot.models.vkmodels.GroupEvent@4830d727]
+2021-01-20 23:50:01.054 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.jhoysbou.TBot.models.vkmodels.GroupEventDAO@4830d727]
 2021-01-20 23:50:10.389 [http-nio-8080-exec-1] INFO  c.j.T.c.NotificationController - test callback server
 2021-01-20 23:50:10.395 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
 2021-01-20 23:50:10.396 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing ["7e4d4c8f"]
@@ -11395,10 +11395,10 @@ Unconditional classes:
 2021-01-21 00:00:57.362 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2021-01-21 00:00:57.362 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
 2021-01-21 00:00:57.447 [http-nio-8080-exec-1] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:00:57.499 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "object" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (2 known properties: "type", "group_id"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "object" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (2 known properties: "type", "group_id"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"])
+2021-01-21 00:00:57.499 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "object" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (2 known properties: "type", "group_id"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "object" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (2 known properties: "type", "group_id"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -11460,10 +11460,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-01-21 00:01:07.524 [http-nio-8080-exec-2] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:01:07.527 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "object" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (2 known properties: "type", "group_id"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "object" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (2 known properties: "type", "group_id"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"])
+2021-01-21 00:01:07.527 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "object" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (2 known properties: "type", "group_id"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "object" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (2 known properties: "type", "group_id"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -11554,10 +11554,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 2021-01-21 00:03:59.797 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2021-01-21 00:03:59.797 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
 2021-01-21 00:03:59.865 [http-nio-8080-exec-1] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:03:59.919 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (0 known properties: ])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["type"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (0 known properties: ])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["type"])
+2021-01-21 00:03:59.919 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (0 known properties: ])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["type"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (0 known properties: ])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["type"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -11619,10 +11619,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-01-21 00:04:10.628 [http-nio-8080-exec-2] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:04:10.638 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (0 known properties: ])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["type"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (0 known properties: ])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["type"])
+2021-01-21 00:04:10.638 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (0 known properties: ])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["type"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (0 known properties: ])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["type"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -11684,10 +11684,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-01-21 00:04:15.592 [http-nio-8080-exec-3] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:04:15.595 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (0 known properties: ])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["type"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (0 known properties: ])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["type"])
+2021-01-21 00:04:15.595 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (0 known properties: ])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["type"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (0 known properties: ])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["type"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -11766,10 +11766,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 2021-01-21 00:05:02.476 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
 2021-01-21 00:05:02.519 [http-nio-8080-exec-1] INFO  c.j.T.c.NotificationController - new post event
 2021-01-21 00:05:39.500 [http-nio-8080-exec-2] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:05:39.545 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (0 known properties: ])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["type"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (0 known properties: ])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["type"])
+2021-01-21 00:05:39.545 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (0 known properties: ])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["type"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (0 known properties: ])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["type"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -11830,10 +11830,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
-2021-01-21 00:05:39.545 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (0 known properties: ])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["type"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (0 known properties: ])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["type"])
+2021-01-21 00:05:39.545 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (0 known properties: ])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["type"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "type" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (0 known properties: ])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["type"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -11911,10 +11911,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 2021-01-21 00:06:31.367 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2021-01-21 00:06:31.369 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
 2021-01-21 00:06:31.439 [http-nio-8080-exec-1] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:06:36.925 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])
+2021-01-21 00:06:36.925 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -11979,10 +11979,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-01-21 00:06:47.597 [http-nio-8080-exec-2] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:06:51.364 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])
+2021-01-21 00:06:51.364 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -12063,10 +12063,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 2021-01-21 00:07:06.070 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2021-01-21 00:07:06.071 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
 2021-01-21 00:07:06.129 [http-nio-8080-exec-1] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:07:06.181 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])
+2021-01-21 00:07:06.181 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -12131,10 +12131,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-01-21 00:07:10.500 [http-nio-8080-exec-2] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:07:10.505 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])
+2021-01-21 00:07:10.505 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -12199,10 +12199,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-01-21 00:07:16.385 [http-nio-8080-exec-3] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:07:16.387 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])
+2021-01-21 00:07:16.387 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -12267,10 +12267,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-01-21 00:08:27.637 [http-nio-8080-exec-4] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:08:27.641 [http-nio-8080-exec-4] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])
+2021-01-21 00:08:27.641 [http-nio-8080-exec-4] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (9 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "can_delete", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -12351,10 +12351,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 2021-01-21 00:08:56.150 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2021-01-21 00:08:56.150 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
 2021-01-21 00:08:56.183 [http-nio-8080-exec-1] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:08:56.212 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])
+2021-01-21 00:08:56.212 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -12419,10 +12419,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-01-21 00:09:06.453 [http-nio-8080-exec-2] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:09:06.458 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])
+2021-01-21 00:09:06.458 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -12487,10 +12487,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-01-21 00:09:55.510 [http-nio-8080-exec-3] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:09:55.515 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])
+2021-01-21 00:09:55.515 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -12555,10 +12555,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-01-21 00:10:16.498 [http-nio-8080-exec-4] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:10:16.503 [http-nio-8080-exec-4] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPost), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["object"]->com.jhoysbou.TBot.models.vkmodels.WallPost["can_edit"])
+2021-01-21 00:10:16.503 [http-nio-8080-exec-4] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "can_edit" (class com.jhoysbou.TBot.models.vkmodels.WallPostDAO), not marked as ignorable (8 known properties: "from_id", "marked_as_ads", "owner_id", "post_type", "id", "text", "date", "created_by"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["object"]->com.jhoysbou.TBot.models.vkmodels.WallPostDAO["can_edit"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -12639,10 +12639,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 2021-01-21 00:11:14.908 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2021-01-21 00:11:14.908 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
 2021-01-21 00:11:14.943 [http-nio-8080-exec-1] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:11:14.973 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (3 known properties: "type", "group_id", "object"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["event_id"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (3 known properties: "type", "group_id", "object"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["event_id"])
+2021-01-21 00:11:14.973 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (3 known properties: "type", "group_id", "object"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["event_id"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (3 known properties: "type", "group_id", "object"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["event_id"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -12704,10 +12704,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-01-21 00:11:25.515 [http-nio-8080-exec-2] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:11:25.520 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (3 known properties: "type", "group_id", "object"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["event_id"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (3 known properties: "type", "group_id", "object"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["event_id"])
+2021-01-21 00:11:25.520 [http-nio-8080-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (3 known properties: "type", "group_id", "object"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["event_id"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (3 known properties: "type", "group_id", "object"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["event_id"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -12769,10 +12769,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-01-21 00:12:06.475 [http-nio-8080-exec-3] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:12:06.479 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (3 known properties: "type", "group_id", "object"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["event_id"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (3 known properties: "type", "group_id", "object"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["event_id"])
+2021-01-21 00:12:06.479 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (3 known properties: "type", "group_id", "object"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["event_id"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (3 known properties: "type", "group_id", "object"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["event_id"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -12834,10 +12834,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-01-21 00:14:15.588 [http-nio-8080-exec-4] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:14:15.593 [http-nio-8080-exec-4] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (3 known properties: "type", "group_id", "object"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["event_id"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (3 known properties: "type", "group_id", "object"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["event_id"])
+2021-01-21 00:14:15.593 [http-nio-8080-exec-4] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (3 known properties: "type", "group_id", "object"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["event_id"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (3 known properties: "type", "group_id", "object"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["event_id"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)
@@ -12899,10 +12899,10 @@ com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized f
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 2021-01-21 00:14:25.842 [http-nio-8080-exec-5] INFO  c.j.T.c.NotificationController - new post event
-2021-01-21 00:14:25.847 [http-nio-8080-exec-5] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (3 known properties: "type", "group_id", "object"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["event_id"])] with root cause
-com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEvent), not marked as ignorable (3 known properties: "type", "group_id", "object"])
- at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEvent["event_id"])
+2021-01-21 00:14:25.847 [http-nio-8080-exec-5] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (3 known properties: "type", "group_id", "object"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["event_id"])] with root cause
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "event_id" (class com.jhoysbou.TBot.models.vkmodels.GroupEventDAO), not marked as ignorable (3 known properties: "type", "group_id", "object"])
+ at [Source: UNKNOWN; line: -1, column: -1] (through reference chain: com.jhoysbou.TBot.models.vkmodels.GroupEventDAO["event_id"])
 	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
 	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:855)
 	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1212)

@@ -3,7 +3,7 @@ package com.jhoysbou.TBot.models.vkmodels;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User {
+public class UserDAO {
     private long id;
     private String first_name;
     private String last_name;

@@ -1,6 +1,6 @@
 package com.jhoysbou.TBot.services;
 
-import com.jhoysbou.TBot.models.vkmodels.GroupEvent;
+import com.jhoysbou.TBot.models.vkmodels.GroupEventDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class DefaultNotificationService implements NotificationService {
     }
 
     @Override
-    public void sendNotification(GroupEvent event) {
+    public void sendNotification(GroupEventDAO event) {
 
     }
 }

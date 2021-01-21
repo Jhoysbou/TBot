@@ -3,7 +3,7 @@ package com.jhoysbou.TBot.models.vkmodels;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WallPost {
+public class WallPostDAO {
     private long id;
     private long from_id;
     private long owner_id;

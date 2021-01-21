@@ -1,14 +1,14 @@
 package com.jhoysbou.TBot.storage;
 
-import com.jhoysbou.TBot.models.vkmodels.User;
+import com.jhoysbou.TBot.models.vkmodels.UserDAO;
 
 import java.util.List;
 
 public interface TargetUserStorage {
 
-    List<User> getUsers();
+    List<UserDAO> getUsers();
 
-    void addUsers(final List<User> users);
+    void addUsers(final List<UserDAO> userDAOS);
 
-    void deleteUsers(final List<User> users);
+    void deleteUsers(final List<UserDAO> userDAOS);
 }

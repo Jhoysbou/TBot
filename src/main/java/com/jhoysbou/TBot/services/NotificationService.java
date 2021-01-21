@@ -1,9 +1,9 @@
 package com.jhoysbou.TBot.services;
 
-import com.jhoysbou.TBot.models.vkmodels.GroupEvent;
+import com.jhoysbou.TBot.models.vkmodels.GroupEventDAO;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface NotificationService {
-    void sendNotification(final GroupEvent event);
+    void sendNotification(final GroupEventDAO event);
 }

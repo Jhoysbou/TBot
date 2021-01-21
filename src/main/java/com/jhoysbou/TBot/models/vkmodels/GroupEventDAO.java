@@ -1,6 +1,6 @@
 package com.jhoysbou.TBot.models.vkmodels;
 
-public class GroupEvent<T> {
+public class GroupEventDAO<T> {
     private String event_id;
     private String type;
     private String group_id;
