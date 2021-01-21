@@ -35,20 +35,34 @@ public class VKApi implements GroupApi {
                 + "&count=" + count
                 + "&v=" + API_VERSION
                 + "&offset=" + offset
-                + "&extended=");
+                + "&extended="
+        );
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(uri)
                 .GET()
                 .build();
+
         HttpResponse<ConversationWrapper> response = client.send(request, new ConversationWrapperBodyHandler());
 
         return response.body();
     }
 
     @Override
-    public void sendMessage(Message message, List<UserDAO> peers) {
+    public void sendMessage(Message message, List<Long> peers) throws IOException, InterruptedException {
+        final URI uri = URI.create(URL
+                + "messages.send?access_token=" + ACCESS_TOKEN
+                + "&peer_ids=" + peers.stream().distinct().map(String::valueOf).reduce((acc, id) -> acc + "," + id).orElse("")
+                + "&random_id=" + System.currentTimeMillis()
+                + "&message=" + message.getText()
+                + "&v=" + API_VERSION
+        );
 
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(uri)
+                .GET()
+                .build();
+        HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
     }
 
 

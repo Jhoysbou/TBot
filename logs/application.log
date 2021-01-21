@@ -14395,3 +14395,264 @@ Caused by: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot d
 2021-01-22 00:17:03.777 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
 2021-01-22 00:17:03.785 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 1.642 seconds (JVM running for 2.418)
 2021-01-22 00:18:47.610 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:19:33.584 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 13996 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 01:19:33.587 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 01:19:34.303 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 01:19:34.310 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:19:34.310 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 01:19:34.311 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 01:19:34.359 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 01:19:34.359 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 719 ms
+2021-01-22 01:19:38.903 [main] INFO  c.j.T.s.DefaultNotificationService - conversationCount = 37, items = [com.jhoysbou.TBot.models.vkmodels.Pair@433348bc, com.jhoysbou.TBot.models.vkmodels.Pair@6d1dcdff, com.jhoysbou.TBot.models.vkmodels.Pair@102ecc22, com.jhoysbou.TBot.models.vkmodels.Pair@7ff35a3f, com.jhoysbou.TBot.models.vkmodels.Pair@26dc9bd5, com.jhoysbou.TBot.models.vkmodels.Pair@252dc8c4, com.jhoysbou.TBot.models.vkmodels.Pair@43045f9f, com.jhoysbou.TBot.models.vkmodels.Pair@2643d762, com.jhoysbou.TBot.models.vkmodels.Pair@6403e24c, com.jhoysbou.TBot.models.vkmodels.Pair@2f236de0, com.jhoysbou.TBot.models.vkmodels.Pair@4eba373c, com.jhoysbou.TBot.models.vkmodels.Pair@767a014e, com.jhoysbou.TBot.models.vkmodels.Pair@d109c4f, com.jhoysbou.TBot.models.vkmodels.Pair@3968bc60, com.jhoysbou.TBot.models.vkmodels.Pair@26f46fa6, com.jhoysbou.TBot.models.vkmodels.Pair@227a47, com.jhoysbou.TBot.models.vkmodels.Pair@9596ce8, com.jhoysbou.TBot.models.vkmodels.Pair@75ae4a1f, com.jhoysbou.TBot.models.vkmodels.Pair@70228253, com.jhoysbou.TBot.models.vkmodels.Pair@63c12e52, com.jhoysbou.TBot.models.vkmodels.Pair@21bd20ee, com.jhoysbou.TBot.models.vkmodels.Pair@26c47874, com.jhoysbou.TBot.models.vkmodels.Pair@421056e5, com.jhoysbou.TBot.models.vkmodels.Pair@2849434b, com.jhoysbou.TBot.models.vkmodels.Pair@60bbacfc, com.jhoysbou.TBot.models.vkmodels.Pair@65b97f47, com.jhoysbou.TBot.models.vkmodels.Pair@255eaa6b, com.jhoysbou.TBot.models.vkmodels.Pair@476fe690, com.jhoysbou.TBot.models.vkmodels.Pair@7a0e7ecd, com.jhoysbou.TBot.models.vkmodels.Pair@54e3658c, com.jhoysbou.TBot.models.vkmodels.Pair@43e9089, com.jhoysbou.TBot.models.vkmodels.Pair@3c5dbdf8, com.jhoysbou.TBot.models.vkmodels.Pair@352c44a8, com.jhoysbou.TBot.models.vkmodels.Pair@7aac8884, com.jhoysbou.TBot.models.vkmodels.Pair@a66e580, com.jhoysbou.TBot.models.vkmodels.Pair@5b852b49, com.jhoysbou.TBot.models.vkmodels.Pair@cdb2d95]
+2021-01-22 01:19:50.777 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:19:50.934 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 01:19:50.944 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 17.848 seconds (JVM running for 18.514)
+2021-01-22 01:19:50.965 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:19:58.364 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 14008 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 01:19:58.366 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 01:19:58.927 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 01:19:58.933 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:19:58.934 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 01:19:58.934 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 01:19:58.976 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 01:19:58.977 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 578 ms
+2021-01-22 01:19:59.359 [main] INFO  c.j.T.s.DefaultNotificationService - conversationCount = 37, items = [com.jhoysbou.TBot.models.vkmodels.Pair@2819c460, com.jhoysbou.TBot.models.vkmodels.Pair@30364216, com.jhoysbou.TBot.models.vkmodels.Pair@38bb9d7a, com.jhoysbou.TBot.models.vkmodels.Pair@1e8ab90f, com.jhoysbou.TBot.models.vkmodels.Pair@78d6447a, com.jhoysbou.TBot.models.vkmodels.Pair@7a729f84, com.jhoysbou.TBot.models.vkmodels.Pair@1e469dfd, com.jhoysbou.TBot.models.vkmodels.Pair@554f0dfb, com.jhoysbou.TBot.models.vkmodels.Pair@1f7076bc, com.jhoysbou.TBot.models.vkmodels.Pair@71904469]
+2021-01-22 01:19:59.613 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:19:59.734 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:19:59.742 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 01:19:59.749 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 1.6 seconds (JVM running for 2.044)
+2021-01-22 01:20:00.687 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:20:03.652 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 14017 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 01:20:03.654 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 01:20:04.252 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 01:20:04.258 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:20:04.258 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 01:20:04.258 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 01:20:04.298 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 01:20:04.298 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 613 ms
+2021-01-22 01:20:10.798 [main] INFO  c.j.T.s.DefaultNotificationService - conversationCount = 37, items = [com.jhoysbou.TBot.models.vkmodels.Pair@6920614, com.jhoysbou.TBot.models.vkmodels.Pair@6069dd38, com.jhoysbou.TBot.models.vkmodels.Pair@5fa23c, com.jhoysbou.TBot.models.vkmodels.Pair@558756be, com.jhoysbou.TBot.models.vkmodels.Pair@433348bc, com.jhoysbou.TBot.models.vkmodels.Pair@6d1dcdff, com.jhoysbou.TBot.models.vkmodels.Pair@102ecc22, com.jhoysbou.TBot.models.vkmodels.Pair@7ff35a3f, com.jhoysbou.TBot.models.vkmodels.Pair@26dc9bd5, com.jhoysbou.TBot.models.vkmodels.Pair@252dc8c4]
+2021-01-22 01:21:26.597 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:21:26.724 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:21:26.733 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 01:21:26.742 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 83.333 seconds (JVM running for 83.97)
+2021-01-22 01:21:54.580 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:42:56.351 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 14358 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 01:42:56.353 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 01:42:56.987 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 01:42:56.993 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:42:56.993 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 01:42:56.993 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 01:42:57.043 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 01:42:57.044 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 655 ms
+2021-01-22 01:42:57.431 [main] ERROR c.j.T.s.DefaultNotificationService - Cannot fetch conversations
+java.io.IOException: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `com.jhoysbou.TBot.models.vkmodels.ConversationDAO` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (String)"{"response":{"count":37,"items":[{"conversation":{"peer":{"id":137239419,"type":"user","local_id":137239419},"last_message_id":3344,"in_read":3344,"out_read":3344,"is_marked_unread":false,"important":false,"can_write":{"allowed":true}},"last_message":{"date":1611232613,"from_id":-188532837,"id":3344,"out":1,"peer_id":137239419,"text":"test","conversation_message_id":2216,"fwd_messages":[],"important":false,"random_id":174894755,"attachments":[],"is_hidden":false}},{"conversation":{"peer":{"id":1"[truncated 4729 chars]; line: 1, column: 51] (through reference chain: com.jhoysbou.TBot.models.vkmodels.ResponseWrapper["response"]->com.jhoysbou.TBot.models.vkmodels.ConversationWrapper["items"]->java.util.ArrayList[0]->com.jhoysbou.TBot.models.vkmodels.Pair["conversation"])
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:566)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:119)
+	at com.jhoysbou.TBot.services.VkApi.VKApi.getConversations(VKApi.java:46)
+	at com.jhoysbou.TBot.services.DefaultNotificationService.init(DefaultNotificationService.java:37)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:429)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1780)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:609)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1300)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1356)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1206)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:571)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:923)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:588)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at com.jhoysbou.TBot.TBotApplication.main(TBotApplication.java:10)
+Caused by: java.io.UncheckedIOException: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `com.jhoysbou.TBot.models.vkmodels.ConversationDAO` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (String)"{"response":{"count":37,"items":[{"conversation":{"peer":{"id":137239419,"type":"user","local_id":137239419},"last_message_id":3344,"in_read":3344,"out_read":3344,"is_marked_unread":false,"important":false,"can_write":{"allowed":true}},"last_message":{"date":1611232613,"from_id":-188532837,"id":3344,"out":1,"peer_id":137239419,"text":"test","conversation_message_id":2216,"fwd_messages":[],"important":false,"random_id":174894755,"attachments":[],"is_hidden":false}},{"conversation":{"peer":{"id":1"[truncated 4729 chars]; line: 1, column: 51] (through reference chain: com.jhoysbou.TBot.models.vkmodels.ResponseWrapper["response"]->com.jhoysbou.TBot.models.vkmodels.ConversationWrapper["items"]->java.util.ArrayList[0]->com.jhoysbou.TBot.models.vkmodels.Pair["conversation"])
+	at com.jhoysbou.TBot.services.VkApi.bodyhandlers.ConversationWrapperBodyHandler.lambda$apply$0(ConversationWrapperBodyHandler.java:30)
+	at java.base/java.util.concurrent.CompletableFuture$UniApply.tryFire(CompletableFuture.java:642)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.complete(CompletableFuture.java:2137)
+	at java.net.http/jdk.internal.net.http.ResponseSubscribers$ByteArraySubscriber.onComplete(ResponseSubscribers.java:375)
+	at java.net.http/jdk.internal.net.http.ResponseSubscribers$MappingSubscriber.onComplete(ResponseSubscribers.java:833)
+	at java.net.http/jdk.internal.net.http.Stream.schedule(Stream.java:193)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SynchronizedRestartableTask.run(SequentialScheduler.java:175)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$CompleteRestartableTask.run(SequentialScheduler.java:147)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:198)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:271)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:224)
+	at java.net.http/jdk.internal.net.http.Stream.receiveDataFrame(Stream.java:332)
+	at java.net.http/jdk.internal.net.http.Stream.incoming(Stream.java:398)
+	at java.net.http/jdk.internal.net.http.Http2Connection.processFrame(Http2Connection.java:801)
+	at java.net.http/jdk.internal.net.http.frame.FramesDecoder.decode(FramesDecoder.java:155)
+	at java.net.http/jdk.internal.net.http.Http2Connection$FramesController.processReceivedData(Http2Connection.java:232)
+	at java.net.http/jdk.internal.net.http.Http2Connection.asyncReceive(Http2Connection.java:663)
+	at java.net.http/jdk.internal.net.http.Http2Connection$Http2TubeSubscriber.processQueue(Http2Connection.java:1289)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SynchronizedRestartableTask.run(SequentialScheduler.java:175)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$CompleteRestartableTask.run(SequentialScheduler.java:147)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:198)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:271)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:224)
+	at java.net.http/jdk.internal.net.http.Http2Connection$Http2TubeSubscriber.runOrSchedule(Http2Connection.java:1307)
+	at java.net.http/jdk.internal.net.http.Http2Connection$Http2TubeSubscriber.onNext(Http2Connection.java:1333)
+	at java.net.http/jdk.internal.net.http.Http2Connection$Http2TubeSubscriber.onNext(Http2Connection.java:1267)
+	at java.net.http/jdk.internal.net.http.common.SSLTube$DelegateWrapper.onNext(SSLTube.java:210)
+	at java.net.http/jdk.internal.net.http.common.SSLTube$SSLSubscriberWrapper.onNext(SSLTube.java:492)
+	at java.net.http/jdk.internal.net.http.common.SSLTube$SSLSubscriberWrapper.onNext(SSLTube.java:295)
+	at java.net.http/jdk.internal.net.http.common.SubscriberWrapper$DownstreamPusher.run1(SubscriberWrapper.java:316)
+	at java.net.http/jdk.internal.net.http.common.SubscriberWrapper$DownstreamPusher.run(SubscriberWrapper.java:259)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SynchronizedRestartableTask.run(SequentialScheduler.java:175)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$CompleteRestartableTask.run(SequentialScheduler.java:147)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:198)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:271)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:224)
+	at java.net.http/jdk.internal.net.http.common.SubscriberWrapper.outgoing(SubscriberWrapper.java:232)
+	at java.net.http/jdk.internal.net.http.common.SubscriberWrapper.outgoing(SubscriberWrapper.java:198)
+	at java.net.http/jdk.internal.net.http.common.SSLFlowDelegate$Reader.processData(SSLFlowDelegate.java:444)
+	at java.net.http/jdk.internal.net.http.common.SSLFlowDelegate$Reader$ReaderDownstreamPusher.run(SSLFlowDelegate.java:268)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SynchronizedRestartableTask.run(SequentialScheduler.java:175)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$CompleteRestartableTask.run(SequentialScheduler.java:147)
+	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:198)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of `com.jhoysbou.TBot.models.vkmodels.ConversationDAO` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (String)"{"response":{"count":37,"items":[{"conversation":{"peer":{"id":137239419,"type":"user","local_id":137239419},"last_message_id":3344,"in_read":3344,"out_read":3344,"is_marked_unread":false,"important":false,"can_write":{"allowed":true}},"last_message":{"date":1611232613,"from_id":-188532837,"id":3344,"out":1,"peer_id":137239419,"text":"test","conversation_message_id":2216,"fwd_messages":[],"important":false,"random_id":174894755,"attachments":[],"is_hidden":false}},{"conversation":{"peer":{"id":1"[truncated 4729 chars]; line: 1, column: 51] (through reference chain: com.jhoysbou.TBot.models.vkmodels.ResponseWrapper["response"]->com.jhoysbou.TBot.models.vkmodels.ConversationWrapper["items"]->java.util.ArrayList[0]->com.jhoysbou.TBot.models.vkmodels.Pair["conversation"])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:67)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportBadDefinition(DeserializationContext.java:1615)
+	at com.fasterxml.jackson.databind.DatabindContext.reportBadDefinition(DatabindContext.java:400)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleMissingInstantiator(DeserializationContext.java:1077)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeFromObjectUsingNonDefault(BeanDeserializerBase.java:1332)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:331)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:164)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:293)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:156)
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:290)
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:249)
+	at com.fasterxml.jackson.databind.deser.std.CollectionDeserializer.deserialize(CollectionDeserializer.java:26)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:293)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:156)
+	at com.fasterxml.jackson.databind.deser.impl.MethodProperty.deserializeAndSet(MethodProperty.java:129)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:293)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:156)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4526)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3468)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3451)
+	at com.jhoysbou.TBot.services.VkApi.bodyhandlers.ConversationWrapperBodyHandler.lambda$apply$0(ConversationWrapperBodyHandler.java:24)
+	... 46 common frames omitted
+2021-01-22 01:42:57.509 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:42:57.644 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:42:57.652 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 01:42:57.661 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 1.547 seconds (JVM running for 2.074)
+2021-01-22 01:43:44.300 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:43:45.962 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 14379 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 01:43:45.964 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 01:43:46.515 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 01:43:46.520 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:43:46.521 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 01:43:46.521 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 01:43:46.556 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 01:43:46.557 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 554 ms
+2021-01-22 01:43:46.943 [main] INFO  c.j.T.s.DefaultNotificationService - conversationCount = 37, items = [com.jhoysbou.TBot.models.vkmodels.Pair@6944e53e, com.jhoysbou.TBot.models.vkmodels.Pair@52e04737, com.jhoysbou.TBot.models.vkmodels.Pair@5bc7e78e, com.jhoysbou.TBot.models.vkmodels.Pair@1a4d1ab7, com.jhoysbou.TBot.models.vkmodels.Pair@546e61d5, com.jhoysbou.TBot.models.vkmodels.Pair@4674d90, com.jhoysbou.TBot.models.vkmodels.Pair@60783105, com.jhoysbou.TBot.models.vkmodels.Pair@1292071f, com.jhoysbou.TBot.models.vkmodels.Pair@35d5ac51, com.jhoysbou.TBot.models.vkmodels.Pair@b606cb6]
+2021-01-22 01:43:47.129 [main] INFO  c.j.T.s.DefaultNotificationService - Conversation storage filled
+2021-01-22 01:43:47.234 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:43:47.333 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:43:47.339 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 01:43:47.346 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 1.645 seconds (JVM running for 2.089)
+2021-01-22 01:44:18.288 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:44:20.157 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 14396 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 01:44:20.159 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 01:44:20.737 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 01:44:20.742 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:44:20.742 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 01:44:20.743 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 01:44:20.783 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 01:44:20.783 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 593 ms
+2021-01-22 01:44:21.204 [main] INFO  c.j.T.s.DefaultNotificationService - conversationCount = 37, items = [com.jhoysbou.TBot.models.vkmodels.Pair@46c269e0, com.jhoysbou.TBot.models.vkmodels.Pair@6920614, com.jhoysbou.TBot.models.vkmodels.Pair@6069dd38, com.jhoysbou.TBot.models.vkmodels.Pair@5fa23c, com.jhoysbou.TBot.models.vkmodels.Pair@558756be, com.jhoysbou.TBot.models.vkmodels.Pair@433348bc, com.jhoysbou.TBot.models.vkmodels.Pair@6d1dcdff, com.jhoysbou.TBot.models.vkmodels.Pair@102ecc22, com.jhoysbou.TBot.models.vkmodels.Pair@7ff35a3f, com.jhoysbou.TBot.models.vkmodels.Pair@26dc9bd5]
+2021-01-22 01:44:21.395 [main] INFO  c.j.T.s.DefaultNotificationService - Conversation storage filled
+2021-01-22 01:44:28.169 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:44:28.311 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 01:44:28.320 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 8.432 seconds (JVM running for 9.115)
+2021-01-22 01:44:28.338 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:45:39.488 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 14424 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 01:45:39.490 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 01:45:40.122 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 01:45:40.129 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:45:40.129 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 01:45:40.129 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 01:45:40.177 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 01:45:40.177 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 655 ms
+2021-01-22 01:45:40.657 [main] INFO  c.j.T.s.DefaultNotificationService - conversationCount = 37, items = [com.jhoysbou.TBot.models.vkmodels.Pair@4b6e1c0, com.jhoysbou.TBot.models.vkmodels.Pair@561b61ed, com.jhoysbou.TBot.models.vkmodels.Pair@654c7d2d, com.jhoysbou.TBot.models.vkmodels.Pair@26cb5207, com.jhoysbou.TBot.models.vkmodels.Pair@15400fff, com.jhoysbou.TBot.models.vkmodels.Pair@18d910b3, com.jhoysbou.TBot.models.vkmodels.Pair@1e7ab390, com.jhoysbou.TBot.models.vkmodels.Pair@625d9132, com.jhoysbou.TBot.models.vkmodels.Pair@77774571, com.jhoysbou.TBot.models.vkmodels.Pair@277b8fa4]
+2021-01-22 01:45:40.838 [main] INFO  c.j.T.s.DefaultNotificationService - Conversation storage filled
+2021-01-22 01:46:05.035 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:46:05.159 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 01:46:05.167 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 25.907 seconds (JVM running for 26.461)
+2021-01-22 01:46:05.178 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:47:03.339 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 14445 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 01:47:03.340 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 01:47:03.894 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 01:47:03.899 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:47:03.900 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 01:47:03.900 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 01:47:03.939 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 01:47:03.940 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 571 ms
+2021-01-22 01:47:04.382 [main] INFO  c.j.T.s.DefaultNotificationService - conversationCount = 37, items = [com.jhoysbou.TBot.models.vkmodels.Pair@1e7ab390, com.jhoysbou.TBot.models.vkmodels.Pair@625d9132, com.jhoysbou.TBot.models.vkmodels.Pair@77774571, com.jhoysbou.TBot.models.vkmodels.Pair@277b8fa4, com.jhoysbou.TBot.models.vkmodels.Pair@6cd64ee8, com.jhoysbou.TBot.models.vkmodels.Pair@620c8641, com.jhoysbou.TBot.models.vkmodels.Pair@2f1d0bbc, com.jhoysbou.TBot.models.vkmodels.Pair@5460b754, com.jhoysbou.TBot.models.vkmodels.Pair@a9f023e, com.jhoysbou.TBot.models.vkmodels.Pair@c27a3a2]
+2021-01-22 01:47:04.579 [main] INFO  c.j.T.s.DefaultNotificationService - Conversation storage filled
+2021-01-22 01:47:32.318 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:47:32.438 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 01:47:32.446 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 29.319 seconds (JVM running for 29.884)
+2021-01-22 01:47:32.476 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:47:34.475 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 14457 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 01:47:34.477 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 01:47:35.062 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 01:47:35.069 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:47:35.069 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 01:47:35.069 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 01:47:35.111 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 01:47:35.111 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 605 ms
+2021-01-22 01:47:35.554 [main] INFO  c.j.T.s.DefaultNotificationService - conversationCount = 37, items = [com.jhoysbou.TBot.models.vkmodels.Pair@6069dd38, com.jhoysbou.TBot.models.vkmodels.Pair@5fa23c, com.jhoysbou.TBot.models.vkmodels.Pair@558756be, com.jhoysbou.TBot.models.vkmodels.Pair@433348bc, com.jhoysbou.TBot.models.vkmodels.Pair@6d1dcdff, com.jhoysbou.TBot.models.vkmodels.Pair@102ecc22, com.jhoysbou.TBot.models.vkmodels.Pair@7ff35a3f, com.jhoysbou.TBot.models.vkmodels.Pair@26dc9bd5, com.jhoysbou.TBot.models.vkmodels.Pair@252dc8c4, com.jhoysbou.TBot.models.vkmodels.Pair@43045f9f]
+2021-01-22 01:47:35.718 [main] INFO  c.j.T.s.DefaultNotificationService - Conversation storage filled
+2021-01-22 01:47:54.335 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:47:54.470 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 01:47:54.479 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 20.233 seconds (JVM running for 21.033)
+2021-01-22 01:47:54.503 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:47:56.605 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 14467 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 01:47:56.606 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 01:47:57.092 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 01:47:57.097 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:47:57.098 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 01:47:57.098 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 01:47:57.135 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 01:47:57.135 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 500 ms
+2021-01-22 01:47:57.528 [main] INFO  c.j.T.s.DefaultNotificationService - conversationCount = 37, items = [com.jhoysbou.TBot.models.vkmodels.Pair@2819c460, com.jhoysbou.TBot.models.vkmodels.Pair@30364216, com.jhoysbou.TBot.models.vkmodels.Pair@38bb9d7a, com.jhoysbou.TBot.models.vkmodels.Pair@1e8ab90f, com.jhoysbou.TBot.models.vkmodels.Pair@78d6447a, com.jhoysbou.TBot.models.vkmodels.Pair@7a729f84, com.jhoysbou.TBot.models.vkmodels.Pair@1e469dfd, com.jhoysbou.TBot.models.vkmodels.Pair@554f0dfb, com.jhoysbou.TBot.models.vkmodels.Pair@1f7076bc, com.jhoysbou.TBot.models.vkmodels.Pair@71904469]
+2021-01-22 01:47:57.702 [main] INFO  c.j.T.s.DefaultNotificationService - Conversation storage filled
+2021-01-22 01:47:57.938 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 01:47:58.034 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2021-01-22 01:47:58.040 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 01:47:58.047 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 1.623 seconds (JVM running for 2.13)

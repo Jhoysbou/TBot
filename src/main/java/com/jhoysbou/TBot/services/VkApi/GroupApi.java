@@ -1,6 +1,7 @@
 package com.jhoysbou.TBot.services.VkApi;
 
 import com.jhoysbou.TBot.models.Message;
+import com.jhoysbou.TBot.models.vkmodels.ConversationDAO;
 import com.jhoysbou.TBot.models.vkmodels.ConversationWrapper;
 import com.jhoysbou.TBot.models.vkmodels.UserDAO;
 
@@ -18,5 +19,5 @@ public interface GroupApi {
      */
     ConversationWrapper getConversations(final short count, final long offset) throws IOException, InterruptedException;
 
-    void sendMessage(final Message message, List<UserDAO> peers);
+    void sendMessage(final Message message, List<Long> peers) throws IOException, InterruptedException;
 }

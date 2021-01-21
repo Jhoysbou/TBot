@@ -1,5 +1,6 @@
 package com.jhoysbou.TBot.services;
 
+import com.jhoysbou.TBot.models.Message;
 import com.jhoysbou.TBot.models.vkmodels.ConversationDAO;
 import com.jhoysbou.TBot.models.vkmodels.ConversationWrapper;
 import com.jhoysbou.TBot.models.vkmodels.GroupEventDAO;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 @Service
 public class DefaultNotificationService implements NotificationService {
     private static final Logger log = LoggerFactory.getLogger(DefaultNotificationService.class);
-    private static final short ITEMS_COUNT = 200;
+    private static final short ITEMS_COUNT = 10;
     private final ConversationStorage storage;
     private final GroupApi api;
 
@@ -57,12 +58,13 @@ public class DefaultNotificationService implements NotificationService {
                 }
             }
 
-            allowedConversations.addAll(
+            storage.addAllConversations(
                     conversationDAOList
                             .stream()
                             .filter(conversationDAO -> conversationDAO.getCan_write().isAllowed())
                             .collect(Collectors.toList())
             );
+            log.info("Conversation storage filled");
         } catch (IOException | InterruptedException e) {
             log.error("Cannot fetch conversations", e);
         }

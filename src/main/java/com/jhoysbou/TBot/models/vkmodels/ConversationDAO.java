@@ -33,7 +33,7 @@ public class ConversationDAO {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public class PeerDAO {
+    public static class PeerDAO {
         private long id;
         private String type;
 
