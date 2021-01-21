@@ -1,10 +1,10 @@
 package com.jhoysbou.TBot.models.vkmodels;
 
-public class NewWallPostEvent {
+public class GroupEvent<T> {
     private String event_id;
     private String type;
     private String group_id;
-    private WallPost object;
+    private T object;
 
     public String getEvent_id() {
         return event_id;
@@ -30,11 +30,11 @@ public class NewWallPostEvent {
         this.group_id = group_id;
     }
 
-    public WallPost getObject() {
+    public T getObject() {
         return object;
     }
 
-    public void setObject(WallPost object) {
+    public void setObject(T object) {
         this.object = object;
     }
 }

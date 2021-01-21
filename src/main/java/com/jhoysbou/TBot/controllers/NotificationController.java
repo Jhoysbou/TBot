@@ -1,7 +1,9 @@
 package com.jhoysbou.TBot.controllers;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jhoysbou.TBot.models.vkmodels.NewWallPostEvent;
+import com.jhoysbou.TBot.models.vkmodels.GroupEvent;
+import com.jhoysbou.TBot.models.vkmodels.WallPost;
 import com.jhoysbou.TBot.services.NotificationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +38,7 @@ public class NotificationController {
             case wall_post_new -> {
                 log.info("new post event");
                 final ObjectMapper mapper = new ObjectMapper();
-                final NewWallPostEvent event = mapper.convertValue(body, NewWallPostEvent.class);
+                final GroupEvent<WallPost> event = mapper.convertValue(body, new TypeReference<GroupEvent<WallPost>>() {});
                 notificationService.sendNotification(event);
                 log.debug("all good");
             }

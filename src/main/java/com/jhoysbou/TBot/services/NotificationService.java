@@ -1,9 +1,9 @@
 package com.jhoysbou.TBot.services;
 
-import com.jhoysbou.TBot.models.vkmodels.NewWallPostEvent;
+import com.jhoysbou.TBot.models.vkmodels.GroupEvent;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface NotificationService {
-    void sendNotification(final NewWallPostEvent event);
+    void sendNotification(final GroupEvent event);
 }
