@@ -9,7 +9,7 @@ import java.io.UncheckedIOException;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
-public class ConversationBodyHandler implements HttpResponse.BodyHandler<ConversationWrapper> {
+public class ConversationWrapperBodyHandler implements HttpResponse.BodyHandler<ConversationWrapper> {
     @Override
     public HttpResponse.BodySubscriber<ConversationWrapper> apply(HttpResponse.ResponseInfo responseInfo) {
         HttpResponse.BodySubscriber<String> upstream = HttpResponse.BodySubscribers.ofString(StandardCharsets.UTF_8);

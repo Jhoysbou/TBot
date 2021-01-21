@@ -1,7 +1,10 @@
 package com.jhoysbou.TBot.models.vkmodels;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ConversationWrapper {
     private long count;
     private List<Pair> items;

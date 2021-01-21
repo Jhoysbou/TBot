@@ -1,10 +1,9 @@
 package com.jhoysbou.TBot.services.VkApi;
 
 import com.jhoysbou.TBot.models.Message;
-import com.jhoysbou.TBot.models.vkmodels.ConversationDAO;
 import com.jhoysbou.TBot.models.vkmodels.ConversationWrapper;
 import com.jhoysbou.TBot.models.vkmodels.UserDAO;
-import com.jhoysbou.TBot.services.VkApi.handlers.ConversationBodyHandler;
+import com.jhoysbou.TBot.services.VkApi.handlers.ConversationWrapperBodyHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -14,39 +13,37 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class VKApi implements GroupApi {
     private static final String URL = "https://api.vk.com/method/";
-    private final String ACCESS_KEY;
+    private final String ACCESS_TOKEN;
     private final HttpClient client;
+    private final String API_VERSION;
 
-    public VKApi(@Value("${vk.access.key}") String accessKey) {
-        this.ACCESS_KEY = accessKey;
+    public VKApi(@Value("${vk.access.key}") String accessKey,
+                 @Value("${vk.api.version}") String api_version) {
+        this.ACCESS_TOKEN = accessKey;
+        API_VERSION = api_version;
         this.client = HttpClient.newHttpClient();
     }
 
     @Override
-    public List<ConversationDAO> getConversations(String accessToken, short count, long offset) throws IOException, InterruptedException {
+    public ConversationWrapper getConversations(final short count, final long offset) throws IOException, InterruptedException {
         final URI uri = URI.create(URL
-                + "messages.getConversations?access_token=" + ACCESS_KEY
+                + "messages.getConversations?access_token=" + ACCESS_TOKEN
                 + "&count=" + count
+                + "&v=" + API_VERSION
                 + "&offset=" + offset
-                + "&extended=0");
+                + "&extended=");
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(uri)
                 .GET()
                 .build();
-        HttpResponse<ConversationWrapper> response = client.send(request, new ConversationBodyHandler());
+        HttpResponse<ConversationWrapper> response = client.send(request, new ConversationWrapperBodyHandler());
 
-        return response
-                .body()
-                .getItems()
-                .stream()
-                .map(ConversationWrapper.Pair::getConversation)
-                .collect(Collectors.toList());
+        return response.body();
     }
 
     @Override
