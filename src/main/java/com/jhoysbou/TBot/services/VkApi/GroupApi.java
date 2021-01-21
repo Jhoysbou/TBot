@@ -1,9 +1,7 @@
 package com.jhoysbou.TBot.services.VkApi;
 
 import com.jhoysbou.TBot.models.Message;
-import com.jhoysbou.TBot.models.vkmodels.ConversationDAO;
 import com.jhoysbou.TBot.models.vkmodels.ConversationWrapper;
-import com.jhoysbou.TBot.models.vkmodels.UserDAO;
 
 import java.io.IOException;
 import java.util.List;

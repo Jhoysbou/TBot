@@ -2,7 +2,6 @@ package com.jhoysbou.TBot.services.VkApi;
 
 import com.jhoysbou.TBot.models.Message;
 import com.jhoysbou.TBot.models.vkmodels.ConversationWrapper;
-import com.jhoysbou.TBot.models.vkmodels.UserDAO;
 import com.jhoysbou.TBot.services.VkApi.bodyhandlers.ConversationWrapperBodyHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -50,11 +49,13 @@ public class VKApi implements GroupApi {
 
     @Override
     public void sendMessage(Message message, List<Long> peers) throws IOException, InterruptedException {
+        var attachment = message.getAttachment();
         final URI uri = URI.create(URL
                 + "messages.send?access_token=" + ACCESS_TOKEN
                 + "&peer_ids=" + peers.stream().distinct().map(String::valueOf).reduce((acc, id) -> acc + "," + id).orElse("")
                 + "&random_id=" + System.currentTimeMillis()
                 + "&message=" + message.getText()
+                + "&attachment=" + attachment.getType() + attachment.getOwner_id() + "_" + attachment.getMedia_id()
                 + "&v=" + API_VERSION
         );
 

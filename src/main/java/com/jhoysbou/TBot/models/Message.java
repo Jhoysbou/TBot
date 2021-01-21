@@ -2,9 +2,14 @@ package com.jhoysbou.TBot.models;
 
 public class Message {
     private String text;
+    private Attachment attachment;
 
-    public Message(String text) {
-        this.text = text;
+    public Attachment getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(Attachment attachment) {
+        this.attachment = attachment;
     }
 
     public String getText() {

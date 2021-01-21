@@ -33,7 +33,7 @@ public class NotificationController {
         switch (type) {
             case confirmation -> {
                 log.info("test callback server");
-                return "7e4d4c8f";
+                return "e6623175";
             }
             case wall_post_new -> {
                 log.info("new post event");

@@ -14656,3 +14656,89 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot
 2021-01-22 01:47:58.034 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
 2021-01-22 01:47:58.040 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
 2021-01-22 01:47:58.047 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 1.623 seconds (JVM running for 2.13)
+2021-01-22 01:52:20.205 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 02:36:33.733 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 15260 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 02:36:33.735 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 02:36:34.473 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 02:36:34.479 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 02:36:34.479 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 02:36:34.479 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 02:36:34.527 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 02:36:34.528 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 758 ms
+2021-01-22 02:36:34.788 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 02:36:34.920 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2021-01-22 02:36:34.928 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 02:36:34.937 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 1.445 seconds (JVM running for 1.93)
+2021-01-22 02:36:53.865 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 02:36:55.740 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 15274 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 02:36:55.742 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 02:36:56.306 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 02:36:56.312 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 02:36:56.312 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 02:36:56.312 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 02:36:56.352 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 02:36:56.353 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 577 ms
+2021-01-22 02:36:56.598 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 02:36:56.705 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2021-01-22 02:36:56.713 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 02:36:56.720 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 1.283 seconds (JVM running for 1.813)
+2021-01-22 02:37:00.342 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-22 02:37:00.343 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-01-22 02:37:00.343 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2021-01-22 02:37:00.387 [http-nio-8080-exec-1] INFO  c.j.T.c.NotificationController - test callback server
+2021-01-22 02:38:12.558 [http-nio-8080-exec-3] INFO  c.j.T.c.NotificationController - new post event
+2021-01-22 02:39:09.887 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 02:39:11.985 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 15307 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 02:39:11.988 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 02:39:12.635 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 02:39:12.642 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 02:39:12.642 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 02:39:12.642 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 02:39:12.683 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 02:39:12.683 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 654 ms
+2021-01-22 02:39:12.951 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 02:39:13.120 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2021-01-22 02:39:13.129 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 02:39:13.136 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 1.497 seconds (JVM running for 2.298)
+2021-01-22 02:39:20.940 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-22 02:39:20.941 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-01-22 02:39:20.941 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2021-01-22 02:39:20.984 [http-nio-8080-exec-1] INFO  c.j.T.c.NotificationController - new post event
+2021-01-22 02:40:20.733 [http-nio-8080-exec-2] INFO  c.j.T.c.NotificationController - new post event
+2021-01-22 02:40:21.025 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 02:40:22.868 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 15327 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 02:40:22.869 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 02:40:23.438 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 02:40:23.444 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 02:40:23.445 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 02:40:23.445 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 02:40:23.488 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 02:40:23.488 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 585 ms
+2021-01-22 02:40:23.722 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 02:40:23.834 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2021-01-22 02:40:23.841 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 02:40:23.848 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 1.297 seconds (JVM running for 1.81)
+2021-01-22 02:40:43.103 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-22 02:40:43.104 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-01-22 02:40:43.105 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2021-01-22 02:40:43.141 [http-nio-8080-exec-1] INFO  c.j.T.c.NotificationController - new post event
+2021-01-22 02:42:46.353 [http-nio-8080-exec-3] INFO  c.j.T.c.NotificationController - new post event
+2021-01-22 02:50:03.203 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-22 02:50:05.816 [main] INFO  com.jhoysbou.TBot.TBotApplication - Starting TBotApplication using Java 15.0.1 on Artems-MacBook-Pro.local with PID 15491 (/Users/jhoysbou/Documents/git_repositories/TBot/build/classes/java/main started by Jhoysbou in /Users/jhoysbou/Documents/git_repositories/TBot)
+2021-01-22 02:50:05.818 [main] INFO  com.jhoysbou.TBot.TBotApplication - No active profile set, falling back to default profiles: default
+2021-01-22 02:50:06.457 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2021-01-22 02:50:06.464 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2021-01-22 02:50:06.465 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2021-01-22 02:50:06.465 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-01-22 02:50:06.507 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-01-22 02:50:06.507 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 653 ms
+2021-01-22 02:50:06.736 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 02:50:06.857 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2021-01-22 02:50:06.864 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-22 02:50:06.871 [main] INFO  com.jhoysbou.TBot.TBotApplication - Started TBotApplication in 1.407 seconds (JVM running for 2.532)
+2021-01-22 02:50:17.593 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-22 02:50:17.593 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2021-01-22 02:50:17.594 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2021-01-22 02:50:17.633 [http-nio-8080-exec-1] INFO  c.j.T.c.NotificationController - new post event
+2021-01-22 02:50:33.541 [http-nio-8080-exec-3] INFO  c.j.T.c.NotificationController - new post event
+2021-01-22 02:59:21.349 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
