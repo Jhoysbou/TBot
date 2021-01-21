@@ -39,3 +39,5 @@ out/
 
 ### Ngrok ###
 ./ngrok
+
+/src/main/resources/application.properties
