@@ -1,7 +1,6 @@
 package com.jhoysbou.TBot.services;
 
 import com.jhoysbou.TBot.models.vkmodels.GroupEventDAO;
-import com.jhoysbou.TBot.models.vkmodels.MessageDAO;
 import com.jhoysbou.TBot.models.vkmodels.NewMessageWrapper;
 import com.jhoysbou.TBot.models.vkmodels.WallPostDAO;
 import org.springframework.stereotype.Service;

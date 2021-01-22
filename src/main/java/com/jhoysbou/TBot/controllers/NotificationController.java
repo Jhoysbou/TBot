@@ -51,7 +51,8 @@ public class NotificationController {
                 log.info("new message");
                 final GroupEventDAO<NewMessageWrapper> event = mapper.convertValue(
                         body,
-                        new TypeReference<GroupEventDAO<NewMessageWrapper>>() {}
+                        new TypeReference<GroupEventDAO<NewMessageWrapper>>() {
+                        }
                 );
                 notificationService.newMessage(event);
             }
