@@ -18,12 +18,12 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/notification")
-public class NotificationController {
-    private static final Logger log = LoggerFactory.getLogger(NotificationController.class);
+public class BotController {
+    private static final Logger log = LoggerFactory.getLogger(BotController.class);
     private final NotificationService notificationService;
 
     @Autowired
-    public NotificationController(NotificationService notificationService) {
+    public BotController(NotificationService notificationService) {
         this.notificationService = notificationService;
     }
 
