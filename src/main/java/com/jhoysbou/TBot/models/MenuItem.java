@@ -1,20 +1,39 @@
 package com.jhoysbou.TBot.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MenuItem {
-    private List<MenuItem> children;
+    private long id;
+    private List<MenuItem> children = new ArrayList<>();
     private MenuItem parent;
-    private String text;
+    private String trigger;
+    private String responseText;
 
     public MenuItem() {
 
     }
 
-    public MenuItem(List<MenuItem> children, MenuItem parent, String text) {
-        this.children = children;
+
+
+    public MenuItem(long id, MenuItem parent, String trigger, String responseText) {
+        this.id = id;
         this.parent = parent;
-        this.text = text;
+        this.trigger = trigger;
+        this.responseText = responseText;
+    }
+
+    public MenuItem(MenuItem parent, String trigger) {
+        this.parent = parent;
+        this.trigger = trigger;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public List<MenuItem> getChildren() {
@@ -33,11 +52,19 @@ public class MenuItem {
         this.parent = parent;
     }
 
-    public String getText() {
-        return text;
+    public String getTrigger() {
+        return trigger;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setTrigger(String trigger) {
+        this.trigger = trigger;
+    }
+
+    public String getResponseText() {
+        return responseText;
+    }
+
+    public void setResponseText(String responseText) {
+        this.responseText = responseText;
     }
 }

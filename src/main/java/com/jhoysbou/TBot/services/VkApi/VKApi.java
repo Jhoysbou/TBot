@@ -4,7 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.jhoysbou.TBot.models.Message;
 import com.jhoysbou.TBot.models.vkmodels.ConversationWrapper;
+import com.jhoysbou.TBot.services.DefaultFAQService;
 import com.jhoysbou.TBot.services.VkApi.bodyhandlers.ConversationWrapperBodyHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +20,7 @@ import java.util.List;
 
 @Component
 public class VKApi implements GroupApi {
+    private static final Logger log = LoggerFactory.getLogger(VKApi.class);
     private static final String URL = "https://api.vk.com/method/";
     private final String ACCESS_TOKEN;
     private final HttpClient client;
@@ -51,16 +55,20 @@ public class VKApi implements GroupApi {
 
     @Override
     public void sendMessage(Message message, List<Long> peers) throws IOException, InterruptedException {
-        var attachment = message.getAttachment();
+
         String uri = URL
                 + "messages.send?access_token=" + ACCESS_TOKEN
                 + "&peer_ids=" + peers.stream().distinct().map(String::valueOf).reduce((acc, id) -> acc + "," + id).orElse("")
                 + "&random_id=" + System.currentTimeMillis()
-                + "&message=" + message.getText()
                 + "&v=" + API_VERSION;
 
         if (message.hasAttachment()) {
+            var attachment = message.getAttachment();
             uri += "&attachment=" + attachment.getType() + attachment.getOwner_id() + "_" + attachment.getMedia_id();
+        }
+
+        if (message.hasText() && !message.getText().equals("")) {
+            uri += "&message=" + message.getText();
         }
 
         if (message.hasKeyboard()) {
@@ -78,6 +86,7 @@ public class VKApi implements GroupApi {
                 .GET()
                 .build();
         HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        log.debug("message send response body is {} ", response.body());
     }
 
 

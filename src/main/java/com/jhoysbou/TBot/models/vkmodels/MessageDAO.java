@@ -9,6 +9,7 @@ public class MessageDAO {
     private long peer_id;
     private long from_id;
     private String text;
+    private String payload;
 
     public long getId() {
         return id;
@@ -48,5 +49,13 @@ public class MessageDAO {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getPayload() {
+        return payload;
+    }
+
+    public void setPayload(String payload) {
+        this.payload = payload;
     }
 }

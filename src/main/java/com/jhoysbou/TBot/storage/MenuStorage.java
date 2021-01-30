@@ -5,13 +5,19 @@ import com.jhoysbou.TBot.models.MenuItem;
 import java.util.Optional;
 
 public interface MenuStorage {
-    MenuItem getRoot();
+    MenuItem createMenuItem(final Optional<MenuItem> parent, final String trigger, final String responseText);
 
-    void createMenuItem(final MenuItem parent, final MenuItem item);
+    MenuItem getRoot();
 
     void deleteMenuItem(final MenuItem item);
 
-    void updateMenuItem(final MenuItem item);
+    MenuItem updateMenuItem(final MenuItem item, final String trigger, final String responseText);
+
+    MenuItem updateMenuItemTrigger(final MenuItem item, final String trigger);
+
+    MenuItem updateMenuItemResponse(final MenuItem item, final String responseText);
 
     Optional<MenuItem> getMenuByText(final String text);
+
+    Optional<MenuItem> getMenuById(final long id);
 }

@@ -1,8 +1,10 @@
 package com.jhoysbou.TBot.models.vkmodels;
 
+import java.util.List;
+
 public class KeyboardDAO {
     private boolean one_time;
-    private Button[][] buttons;
+    private List<Button[]> buttons;
     private boolean inline;
 
     public boolean isOne_time() {
@@ -13,11 +15,11 @@ public class KeyboardDAO {
         this.one_time = one_time;
     }
 
-    public Button[][] getButtons() {
+    public List<Button[]> getButtons() {
         return buttons;
     }
 
-    public void setButtons(Button[][] buttons) {
+    public void setButtons(List<Button[]> buttons) {
         this.buttons = buttons;
     }
 

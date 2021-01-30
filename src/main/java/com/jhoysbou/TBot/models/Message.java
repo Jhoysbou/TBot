@@ -29,6 +29,10 @@ public class Message {
         return keyboard != null;
     }
 
+    public boolean hasText() {
+        return text != null;
+    }
+
     public Attachment getAttachment() {
         return attachment;
     }
