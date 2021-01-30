@@ -1,10 +1,12 @@
 package com.jhoysbou.TBot.storage;
 
 import com.jhoysbou.TBot.models.MenuItem;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
+@Component
 public class MemoryMenuStorage implements MenuStorage {
     private static final MenuItem root = new MenuItem(
             new ArrayList<MenuItem>(),

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jhoysbou.TBot.models.vkmodels.GroupEventDAO;
 import com.jhoysbou.TBot.models.vkmodels.NewMessageWrapper;
 import com.jhoysbou.TBot.models.vkmodels.WallPostDAO;
+import com.jhoysbou.TBot.services.FAQService;
 import com.jhoysbou.TBot.services.NotificationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,10 +22,12 @@ import java.util.Map;
 public class BotController {
     private static final Logger log = LoggerFactory.getLogger(BotController.class);
     private final NotificationService notificationService;
+    private final FAQService faqService;
 
     @Autowired
-    public BotController(NotificationService notificationService) {
+    public BotController(NotificationService notificationService, FAQService faqService) {
         this.notificationService = notificationService;
+        this.faqService = faqService;
     }
 
     @PostMapping
@@ -55,6 +58,7 @@ public class BotController {
                         }
                 );
                 notificationService.newMessage(event);
+                faqService.handleMessage(event);
             }
         }
 
