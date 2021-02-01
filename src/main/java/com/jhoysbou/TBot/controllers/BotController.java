@@ -38,7 +38,7 @@ public class BotController {
         switch (type) {
             case confirmation -> {
                 log.info("test callback server");
-                return "64f157b8";
+                return "5cb7439f";
             }
             case wall_post_new -> {
                 log.info("new post");

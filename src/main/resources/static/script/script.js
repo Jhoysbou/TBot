@@ -47,12 +47,7 @@ const deleteItem = () => {
     fetch(url.toString(), {method: "POST"})
         .then(response => {
             if (response.ok) {
-                window.history.replaceState(
-                    {},
-                    null,
-                    "/?id=" + window.history.state.prevId
-                )
-                location.reload();
+                goBack();
             } else {
                 showErrorAlert();
             }
