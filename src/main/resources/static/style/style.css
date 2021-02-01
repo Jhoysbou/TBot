@@ -1,0 +1,31 @@
+.content {
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+}
+
+.back_button {
+    margin-left: 17px;
+    margin-right: auto;
+    margin-bottom: 17px;
+    width: 80px;
+}
+
+.delete_button {
+    margin-left: calc(100% - 3*80px - 2*17px);
+    margin-bottom: 17px;
+    width: 80px;
+}
+
+.save_button {
+    width: 80px;
+    margin-bottom: 17px;
+    margin-right: 17px;
+    margin-left: 17px;
+}

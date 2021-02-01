@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TBot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+<section class="content">
+    <div class="controls">
+        <button type="button"
+                class="btn btn-primary back_button"
+                onclick="window.history.back(); return false;">
+            Back
+        </button>
+        <button type="button"
+                class="btn btn-danger delete_button">
+            Delete
+        </button>
+        <button type="button"
+                class="btn btn-primary save_button">
+            Save
+        </button>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Button text</span>
+                <input type="text" class="form-control" th:attr="value=${item.getTrigger()}"
+                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            </div>
+
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Response message</span>
+                <textarea class="form-control"
+                          th:text="${item.getResponseText()}"
+                          aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"></textarea>
+            </div>
+            <div class="children_container">
+                <div class="list-group">
+                    <a th:each="i : ${item.getChildren()}" th:href="@{?id={id}(id=${i.getId()})}"
+                       th:text="${i.getTrigger()}" class="list-group-item list-group-item-action"></a>
+                    <button type="button" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</body>
+</html>

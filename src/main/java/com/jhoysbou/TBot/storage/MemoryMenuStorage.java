@@ -4,6 +4,7 @@ import com.jhoysbou.TBot.models.MenuItem;
 import org.springframework.stereotype.Component;
 
 import java.util.Locale;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Component
@@ -40,20 +41,25 @@ public class MemoryMenuStorage implements MenuStorage {
     }
 
     @Override
-    public MenuItem updateMenuItem(MenuItem item, String trigger, String responseText) {
+    public MenuItem updateMenuItem(long id,
+                                   String trigger,
+                                   String responseText) throws NoSuchElementException {
+        final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
         item.setTrigger(trigger);
         item.setResponseText(responseText);
         return item;
     }
 
     @Override
-    public MenuItem updateMenuItemTrigger(MenuItem item, String trigger) {
+    public MenuItem updateMenuItemTrigger(long id, String trigger) throws NoSuchElementException {
+        final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
         item.setTrigger(trigger);
         return item;
     }
 
     @Override
-    public MenuItem updateMenuItemResponse(MenuItem item, String responseText) {
+    public MenuItem updateMenuItemResponse(long id, String responseText) throws NoSuchElementException {
+        final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
         item.setResponseText(responseText);
         return item;
     }
