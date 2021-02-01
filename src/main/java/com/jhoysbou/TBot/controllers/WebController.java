@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -37,5 +37,37 @@ public class WebController {
         model.addAttribute("item", item);
 
         return "index";
+    }
+
+
+    @PostMapping("/edit")
+    public String editItem(@RequestParam(required = false) Optional<Long> id,
+                           @RequestParam(required = false) Optional<String> trigger,
+                           @RequestParam(required = false) Optional<String> responseText) {
+        editingService.updateMenuItem(
+                id.orElse(editingService.getRoot().getId()),
+                trigger,
+                responseText);
+        return "redirect:/";
+    }
+
+    @PostMapping("/add")
+    public String createItem(@RequestParam(required = false) Optional<Long> id) {
+        editingService.createNewMenuItem(
+                id.orElse(
+                        editingService.getRoot().getId()
+                )
+        );
+        return "redirect:/";
+    }
+
+    @PostMapping("/delete")
+    public String deleteItem(@RequestParam(required = false) Optional<Long> id) {
+        editingService.deleteMenuItem(
+                id.orElse(
+                        editingService.getRoot().getId()
+                )
+        );
+        return "redirect:/";
     }
 }

@@ -1,5 +1,4 @@
 .content {
-    margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
@@ -28,4 +27,16 @@
     margin-bottom: 17px;
     margin-right: 17px;
     margin-left: 17px;
+}
+
+#success_alert {
+    visibility: hidden;
+}
+
+#error_alert {
+    display: none;
+}
+
+.list-group-item {
+    min-height: 42px;
 }

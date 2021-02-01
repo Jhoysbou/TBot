@@ -36,4 +36,20 @@ public class DefaultEditingService implements EditingService {
             responseText.ifPresent(s -> storage.updateMenuItemResponse(id, s));
         }
     }
+
+    @Override
+    public void createNewMenuItem(final long parentId) {
+        storage.createMenuItem(
+                Optional.of(getMenuItemById(parentId)),
+                "",
+                ""
+        );
+    }
+
+    @Override
+    public void deleteMenuItem(long id) {
+        storage.deleteMenuItem(
+                storage.getMenuById(id).orElseThrow(NoSuchElementException::new)
+        );
+    }
 }
