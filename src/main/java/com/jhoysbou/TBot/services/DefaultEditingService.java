@@ -3,6 +3,7 @@ package com.jhoysbou.TBot.services;
 import com.jhoysbou.TBot.models.MenuItem;
 import com.jhoysbou.TBot.storage.MenuStorage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
@@ -13,7 +14,7 @@ public class DefaultEditingService implements EditingService {
     private final MenuStorage storage;
 
     @Autowired
-    public DefaultEditingService(MenuStorage storage) {
+    public DefaultEditingService(@Qualifier(value = "consistentMenuStorage") MenuStorage storage) {
         this.storage = storage;
     }
 

@@ -8,9 +8,9 @@ import com.jhoysbou.TBot.storage.MenuStorage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.*;
 
@@ -22,7 +22,7 @@ public class DefaultFAQService implements FAQService {
     private final MenuStorage menuStorage;
 
     @Autowired
-    public DefaultFAQService(GroupApi api, MenuStorage menuStorage) {
+    public DefaultFAQService(GroupApi api, @Qualifier(value = "consistentMenuStorage") MenuStorage menuStorage) {
         this.api = api;
         this.menuStorage = menuStorage;
     }
@@ -31,15 +31,19 @@ public class DefaultFAQService implements FAQService {
     public void handleMessage(GroupEventDAO<NewMessageWrapper> event) {
         final MessageDAO message = event.getObject().getMessage();
         final List<Long> peers = List.of(message.getFrom_id());
-        final String text = message.getText();
+        final String text = message.getText().toLowerCase(Locale.ROOT);
 
-        switch (text.toLowerCase(Locale.ROOT)) {
+        switch (text) {
             case ControlButton.HOME -> {
                 sendMessage(menuStorage.getRoot(), peers);
             }
             case ControlButton.BACK -> {
                 MenuItem currentMenuItem = menuStorage
-                        .getMenuById(Long.parseLong(message.getPayload()))
+                        .getMenuById(
+                                Long.parseLong(
+                                        Optional.ofNullable(message.getPayload()).orElse("0")
+                                )
+                        )
                         .orElseThrow(NoSuchElementException::new);
 
                 MenuItem parent = currentMenuItem.getParent();
@@ -50,7 +54,7 @@ public class DefaultFAQService implements FAQService {
             }
         }
 
-        Optional<MenuItem> menuItem = menuStorage.getMenuByText(message.getText());
+        Optional<MenuItem> menuItem = menuStorage.getMenuByText(text);
 
         menuItem.ifPresent(item -> sendMessage(item, peers));
     }
@@ -65,20 +69,20 @@ public class DefaultFAQService implements FAQService {
     }
 
 //    TODO Delete me
-    @PostConstruct
-    private void test() {
-        MenuItem item1 = menuStorage.createMenuItem(Optional.empty(), "test", "You've clicked on test");
-        menuStorage.createMenuItem(Optional.of(item1), "test1", "You've clicked on test1");
-        menuStorage.createMenuItem(Optional.of(item1), "test2", "You've clicked on test2");
-        menuStorage.createMenuItem(Optional.of(item1), "test3", "You've clicked on test3");
-        menuStorage.createMenuItem(Optional.of(item1), "test4", "You've clicked on test4");
-        menuStorage.createMenuItem(Optional.of(item1), "test5", "You've clicked on test5");
-        menuStorage.createMenuItem(Optional.of(item1), "test6", "You've clicked on test6");
-        menuStorage.createMenuItem(Optional.of(item1), "test7", "You've clicked on test7");
-        menuStorage.createMenuItem(Optional.of(item1), "test8", "You've clicked on test8");
-        menuStorage.createMenuItem(Optional.of(item1), "test9", "You've clicked on test9");
-
-    }
+//    @PostConstruct
+//    private void test() {
+//        MenuItem item1 = menuStorage.createMenuItem(Optional.empty(), "test", "You've clicked on test");
+//        menuStorage.createMenuItem(Optional.of(item1), "test1", "You've clicked on test1");
+//        menuStorage.createMenuItem(Optional.of(item1), "test2", "You've clicked on test2");
+//        menuStorage.createMenuItem(Optional.of(item1), "test3", "You've clicked on test3");
+//        menuStorage.createMenuItem(Optional.of(item1), "test4", "You've clicked on test4");
+//        menuStorage.createMenuItem(Optional.of(item1), "test5", "You've clicked on test5");
+//        menuStorage.createMenuItem(Optional.of(item1), "test6", "You've clicked on test6");
+//        menuStorage.createMenuItem(Optional.of(item1), "test7", "You've clicked on test7");
+//        menuStorage.createMenuItem(Optional.of(item1), "test8", "You've clicked on test8");
+//        menuStorage.createMenuItem(Optional.of(item1), "test9", "You've clicked on test9");
+//
+//    }
 
     private KeyboardDAO makeKeyboard(final MenuItem item) {
         final KeyboardDAO keyboard = new KeyboardDAO();

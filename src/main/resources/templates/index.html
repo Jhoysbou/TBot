@@ -55,6 +55,7 @@
                           aria-label="Sizing example input"
                           aria-describedby="inputGroup-sizing-sm"></textarea>
             </div>
+
             <div class="children_container">
                 <div class="list-group">
                     <div th:each="i : ${item.getChildren()}" th:onclick="'javascript:goTo(' + ${i.getId()} + ')'"

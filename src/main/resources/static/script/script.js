@@ -23,6 +23,7 @@ const updateItem = () => {
 };
 
 const addNewItem = () => {
+    updateItem();
     let url = new URL(window.location.href);
     let params = new URLSearchParams(url.search);
     url.href = url.protocol + url.host + "/add";
@@ -71,6 +72,7 @@ const showErrorAlert = () => {
 }
 
 const goBack = () => {
+    updateItem();
     window.history.back();
 };
 

@@ -40,3 +40,9 @@
 .list-group-item {
     min-height: 42px;
 }
+
+@media (max-width:980px) {
+    .content {
+        width: 90%;
+    }
+}

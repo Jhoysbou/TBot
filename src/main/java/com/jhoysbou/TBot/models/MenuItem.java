@@ -1,11 +1,14 @@
 package com.jhoysbou.TBot.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MenuItem {
     private long id;
     private List<MenuItem> children = new ArrayList<>();
+    @JsonIgnore
     private MenuItem parent;
     private String trigger;
     private String responseText;
@@ -13,7 +16,6 @@ public class MenuItem {
     public MenuItem() {
 
     }
-
 
 
     public MenuItem(long id, MenuItem parent, String trigger, String responseText) {

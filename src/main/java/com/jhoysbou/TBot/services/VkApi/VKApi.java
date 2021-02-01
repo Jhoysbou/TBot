@@ -67,7 +67,7 @@ public class VKApi implements GroupApi {
             uri += "&attachment=" + attachment.getType() + attachment.getOwner_id() + "_" + attachment.getMedia_id();
         }
 
-        if (message.hasText() && !message.getText().equals("")) {
+        if (message.hasText()) {
             uri += "&message=" + message.getText();
         }
 
@@ -86,7 +86,7 @@ public class VKApi implements GroupApi {
                 .GET()
                 .build();
         HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        log.debug("message send response body is {} ", response.body());
+        log.info("message send response body is {} ", response.body());
     }
 
 
