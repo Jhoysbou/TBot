@@ -36,12 +36,34 @@ const addNewItem = () => {
                 window.location.hash = "ERROR";
             }
             location.reload();
-        })
+        });
+};
+
+const deleteItem = () => {
+    let url = new URL(window.location.href);
+    let params = new URLSearchParams(url.search);
+    url.href = url.protocol + url.host + "/delete";
+    url.search = params.toString();
+    fetch(url.toString(), {method: "POST"})
+        .then(response => {
+            if (response.ok) {
+                window.history.replaceState(
+                    {},
+                    null,
+                    "/?id=" + window.history.state.prevId
+                )
+                location.reload();
+            } else {
+                showErrorAlert();
+            }
+        });
 };
 
 const showSuccessAlert = () => {
     SUCCESS_ALERT.style.visibility = "visible";
-    setTimeout(() => SUCCESS_ALERT.style.visibility = 'hidden', 1000);
+    setTimeout(() => {
+        SUCCESS_ALERT.style.visibility = 'hidden'
+    }, 1000);
 };
 
 const showErrorAlert = () => {
@@ -55,15 +77,29 @@ const showErrorAlert = () => {
 
 const goBack = () => {
     window.history.back();
-    location.reload();
 };
 
+// for the pretty alerts after reload
 document.addEventListener("DOMContentLoaded", function (event) {
     if (window.location.hash === "#SUCCESS") {
         showSuccessAlert();
         window.location.hash = "";
+
     } else if (window.location.hash === "#ERROR") {
         showErrorAlert();
         window.location.hash = "";
     }
 });
+
+const goTo = (id) => {
+    let url = "/?id=" + id;
+    let currentUrl = new URL(window.location.href);
+    let params = new URLSearchParams(currentUrl.search);
+    window.history.pushState({prevId: params.get("id")}, null, url);
+    location.reload();
+};
+
+
+window.onpopstate = (e) => {
+    location.reload();
+}
