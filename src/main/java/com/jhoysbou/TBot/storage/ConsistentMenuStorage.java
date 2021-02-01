@@ -1,26 +1,37 @@
 package com.jhoysbou.TBot.storage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jhoysbou.TBot.models.Attachment;
 import com.jhoysbou.TBot.models.MenuItem;
 import com.jhoysbou.TBot.models.MenuItemStorageDto;
+import com.jhoysbou.TBot.utils.AttachmentParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Component
 public class ConsistentMenuStorage implements MenuStorage {
+    private static final Logger log = LoggerFactory.getLogger(ConsistentMenuStorage.class);
     private static long COUNTER = 0;
     private final String PATH;
     private final MenuItem root;
     private final ObjectMapper objectMapper = new ObjectMapper();
+    private final AttachmentParser attachmentParser;
 
-    public ConsistentMenuStorage(@Value("${menu.storage.path}") String path) throws IOException {
+    @Autowired
+    public ConsistentMenuStorage(@Value("${menu.storage.path}") String path,
+                                 AttachmentParser attachmentParser) throws IOException {
+        this.attachmentParser = attachmentParser;
         File file = Paths.get(path).toFile();
         if (file.exists()) {
             MenuItemStorageDto dto = objectMapper.readValue(file, MenuItemStorageDto.class);
@@ -44,14 +55,16 @@ public class ConsistentMenuStorage implements MenuStorage {
         if (parent.isPresent()) {
             parentItem = parent.get();
         }
+        List<Attachment> attachments = attachmentParser.parse(responseText);
 
         final MenuItem item = new MenuItem(COUNTER++, parentItem, trigger, responseText);
+        item.setAttachments(attachments);
         parentItem.getChildren().add(item);
 
         try {
             save();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Couldn't save menu items!", e);
         }
 
         return item;
@@ -68,7 +81,7 @@ public class ConsistentMenuStorage implements MenuStorage {
         try {
             save();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Couldn't save menu items!", e);
         }
     }
 
@@ -77,8 +90,11 @@ public class ConsistentMenuStorage implements MenuStorage {
                                    String trigger,
                                    String responseText) throws NoSuchElementException {
         final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
+        List<Attachment> attachments = attachmentParser.parse(responseText);
         item.setTrigger(trigger);
         item.setResponseText(responseText);
+        item.setAttachments(attachments);
+
         try {
             save();
         } catch (IOException e) {
@@ -94,7 +110,7 @@ public class ConsistentMenuStorage implements MenuStorage {
         try {
             save();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Couldn't save menu items!", e);
         }
         return item;
 
@@ -102,12 +118,14 @@ public class ConsistentMenuStorage implements MenuStorage {
 
     @Override
     public MenuItem updateMenuItemResponse(long id, String responseText) throws NoSuchElementException {
+        List<Attachment> attachments = attachmentParser.parse(responseText);
         final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
+        item.setAttachments(attachments);
         item.setResponseText(responseText);
         try {
             save();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("Couldn't save menu items!", e);
         }
         return item;
     }

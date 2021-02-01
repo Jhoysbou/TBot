@@ -2,9 +2,11 @@ package com.jhoysbou.TBot.models;
 
 import com.jhoysbou.TBot.models.vkmodels.KeyboardDAO;
 
+import java.util.List;
+
 public class Message {
     private String text;
-    private Attachment attachment;
+    private List<Attachment> attachments;
     private KeyboardDAO keyboard;
 
     public Message() {
@@ -15,14 +17,14 @@ public class Message {
         this.keyboard = keyboard;
     }
 
-    public Message(String text, Attachment attachment, KeyboardDAO keyboard) {
+    public Message(String text, List<Attachment> attachments, KeyboardDAO keyboard) {
         this.text = text;
-        this.attachment = attachment;
+        this.attachments = attachments;
         this.keyboard = keyboard;
     }
 
     public boolean hasAttachment() {
-        return attachment != null;
+        return attachments != null && attachments.size() != 0;
     }
 
     public boolean hasKeyboard() {
@@ -33,12 +35,12 @@ public class Message {
         return text != null;
     }
 
-    public Attachment getAttachment() {
-        return attachment;
+    public List<Attachment> getAttachments() {
+        return attachments;
     }
 
-    public void setAttachment(Attachment attachment) {
-        this.attachment = attachment;
+    public void setAttachments(List<Attachment> attachments) {
+        this.attachments = attachments;
     }
 
     public String getText() {

@@ -62,27 +62,11 @@ public class DefaultFAQService implements FAQService {
     private void sendMessage(final MenuItem menuItem, final List<Long> peers) {
         final KeyboardDAO keyboard = makeKeyboard(menuItem);
         try {
-            api.sendMessage(new Message(menuItem.getResponseText(), keyboard), peers);
+            api.sendMessage(new Message(menuItem.getResponseText(), menuItem.getAttachments(), keyboard), peers);
         } catch (IOException | InterruptedException e) {
             log.error("Couldn't send message", e);
         }
     }
-
-//    TODO Delete me
-//    @PostConstruct
-//    private void test() {
-//        MenuItem item1 = menuStorage.createMenuItem(Optional.empty(), "test", "You've clicked on test");
-//        menuStorage.createMenuItem(Optional.of(item1), "test1", "You've clicked on test1");
-//        menuStorage.createMenuItem(Optional.of(item1), "test2", "You've clicked on test2");
-//        menuStorage.createMenuItem(Optional.of(item1), "test3", "You've clicked on test3");
-//        menuStorage.createMenuItem(Optional.of(item1), "test4", "You've clicked on test4");
-//        menuStorage.createMenuItem(Optional.of(item1), "test5", "You've clicked on test5");
-//        menuStorage.createMenuItem(Optional.of(item1), "test6", "You've clicked on test6");
-//        menuStorage.createMenuItem(Optional.of(item1), "test7", "You've clicked on test7");
-//        menuStorage.createMenuItem(Optional.of(item1), "test8", "You've clicked on test8");
-//        menuStorage.createMenuItem(Optional.of(item1), "test9", "You've clicked on test9");
-//
-//    }
 
     private KeyboardDAO makeKeyboard(final MenuItem item) {
         final KeyboardDAO keyboard = new KeyboardDAO();

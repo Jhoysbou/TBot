@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.jhoysbou.TBot.models.Message;
 import com.jhoysbou.TBot.models.vkmodels.ConversationWrapper;
-import com.jhoysbou.TBot.services.DefaultFAQService;
 import com.jhoysbou.TBot.services.VkApi.bodyhandlers.ConversationWrapperBodyHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +12,11 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Component
@@ -63,22 +64,32 @@ public class VKApi implements GroupApi {
                 + "&v=" + API_VERSION;
 
         if (message.hasAttachment()) {
-            var attachment = message.getAttachment();
-            uri += "&attachment=" + attachment.getType() + attachment.getOwner_id() + "_" + attachment.getMedia_id();
+            var attachments = message.getAttachments();
+            uri += "&attachment=" + attachments.stream()
+                    .map(attachment -> attachment.getType() + attachment.getOwner_id() + "_" + attachment.getMedia_id())
+                    .reduce((acc, cur) -> acc + "," + cur)
+                    .get();
         }
 
         if (message.hasText()) {
-            uri += "&message=" + message.getText();
+            uri += "&message=" + URLEncoder.encode(message.getText(), StandardCharsets.UTF_8);
+//                    .replace(":", "%3A")
+//                    .replace("/", "%2F")
+//                    .replace("?", "%3F")
+//                    .replace("[", "%5B")
+//                    .replace("]", "%5D")
+//                    .replace("\\n", "%0D");
         }
 
         if (message.hasKeyboard()) {
             ObjectWriter ow = new ObjectMapper().writer();
-            uri += "&keyboard=" + ow.writeValueAsString(message.getKeyboard())
-                    .replace("{", "%7B")
-                    .replace("}", "%7D")
-                    .replace("\"", "%22");
+            uri += "&keyboard=" + URLEncoder.encode(ow.writeValueAsString(message.getKeyboard()), StandardCharsets.UTF_8);
+//                    .replace("{", "%7B")
+//                    .replace("}", "%7D")
+//                    .replace("\"", "%22");
         }
 
+//        encode url
         uri = uri.replace(" ", "+");
 
         HttpRequest request = HttpRequest.newBuilder()

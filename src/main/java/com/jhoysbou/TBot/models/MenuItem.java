@@ -10,6 +10,7 @@ public class MenuItem {
     private List<MenuItem> children = new ArrayList<>();
     @JsonIgnore
     private MenuItem parent;
+    private List<Attachment> attachments;
     private String trigger;
     private String responseText;
 
@@ -68,5 +69,13 @@ public class MenuItem {
 
     public void setResponseText(String responseText) {
         this.responseText = responseText;
+    }
+
+    public List<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(List<Attachment> attachments) {
+        this.attachments = attachments;
     }
 }

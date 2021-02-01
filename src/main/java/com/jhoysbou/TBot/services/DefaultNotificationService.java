@@ -80,11 +80,13 @@ public class DefaultNotificationService implements NotificationService {
         if (text.toLowerCase(Locale.ROOT).contains(NOTIFICATION_TAG)) {
             final Message message = new Message();
             message.setText("");
-            message.setAttachment(
-                    new Attachment(
-                            "wall",
-                            "-" + event.getGroup_id(),
-                            String.valueOf(event.getObject().getId())
+            message.setAttachments(
+                    List.of(
+                            new Attachment(
+                                    "wall",
+                                    "-" + event.getGroup_id(),
+                                    String.valueOf(event.getObject().getId())
+                            )
                     )
             );
             List<Long> peers = storage.getAll();
