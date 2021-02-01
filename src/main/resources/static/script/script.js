@@ -4,6 +4,7 @@ SUCCESS_ALERT = document.getElementById("success_alert");
 ERROR_ALERT = document.getElementById("error_alert");
 
 const updateItem = () => {
+    debugger
     const buttonText = buttonTextInput.value;
     const responseText = responseTextInput.value;
     let url = new URL(window.location.href);
@@ -23,7 +24,6 @@ const updateItem = () => {
 };
 
 const addNewItem = () => {
-    updateItem();
     let url = new URL(window.location.href);
     let params = new URLSearchParams(url.search);
     url.href = url.protocol + url.host + "/add";
@@ -32,11 +32,11 @@ const addNewItem = () => {
     fetch(url.toString(), {method: "POST"})
         .then(response => {
             if (response.ok) {
-                window.location.hash = "SUCCESS";
+                location.reload();
             } else {
-                window.location.hash = "ERROR";
+                showErrorAlert();
             }
-            location.reload();
+
         });
 };
 
@@ -48,7 +48,7 @@ const deleteItem = () => {
     fetch(url.toString(), {method: "POST"})
         .then(response => {
             if (response.ok) {
-                goBack();
+                window.history.back();
             } else {
                 showErrorAlert();
             }
@@ -72,21 +72,20 @@ const showErrorAlert = () => {
 }
 
 const goBack = () => {
-    updateItem();
     window.history.back();
 };
 
 // for the pretty alerts after reload
-document.addEventListener("DOMContentLoaded", function (event) {
-    if (window.location.hash === "#SUCCESS") {
-        showSuccessAlert();
-        window.location.hash = "";
-
-    } else if (window.location.hash === "#ERROR") {
-        showErrorAlert();
-        window.location.hash = "";
-    }
-});
+// document.addEventListener("DOMContentLoaded", function (event) {
+//     if (window.location.hash === "#SUCCESS") {
+//         showSuccessAlert();
+//         window.location.hash = "";
+//
+//     } else if (window.location.hash === "#ERROR") {
+//         showErrorAlert();
+//         window.location.hash = "";
+//     }
+// });
 
 const goTo = (id) => {
     let url = "/?id=" + id;

@@ -1,5 +1,6 @@
 package com.jhoysbou.TBot.services;
 
+import com.jhoysbou.TBot.models.MenuAttachmentsDto;
 import com.jhoysbou.TBot.models.MenuItem;
 import com.jhoysbou.TBot.models.Message;
 import com.jhoysbou.TBot.models.vkmodels.*;
@@ -61,8 +62,9 @@ public class DefaultFAQService implements FAQService {
 
     private void sendMessage(final MenuItem menuItem, final List<Long> peers) {
         final KeyboardDAO keyboard = makeKeyboard(menuItem);
+        MenuAttachmentsDto attachments = menuItem.getAttachments();
         try {
-            api.sendMessage(new Message(menuItem.getResponseText(), menuItem.getAttachments(), keyboard), peers);
+            api.sendMessage(new Message(attachments.getText(), attachments.getAttachments(), keyboard), peers);
         } catch (IOException | InterruptedException e) {
             log.error("Couldn't send message", e);
         }

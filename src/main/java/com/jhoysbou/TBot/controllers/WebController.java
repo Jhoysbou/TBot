@@ -28,6 +28,7 @@ public class WebController {
     @GetMapping
     public String index(@RequestParam(required = false) Optional<Long> id,
                         final Model model) {
+        log.info("index page accessed");
         MenuItem item = editingService.getRoot();
 
         if (id.isPresent()) {
@@ -44,6 +45,7 @@ public class WebController {
     public String editItem(@RequestParam(required = false) Optional<Long> id,
                            @RequestParam(required = false) Optional<String> trigger,
                            @RequestParam(required = false) Optional<String> responseText) {
+        log.info("editing item {} with trigger {} and responseText {}", id, trigger, responseText);
         editingService.updateMenuItem(
                 id.orElse(editingService.getRoot().getId()),
                 trigger,
@@ -53,6 +55,7 @@ public class WebController {
 
     @PostMapping("/add")
     public String createItem(@RequestParam(required = false) Optional<Long> id) {
+        log.info("creating new element parent = {}", id);
         editingService.createNewMenuItem(
                 id.orElse(
                         editingService.getRoot().getId()
@@ -63,6 +66,7 @@ public class WebController {
 
     @PostMapping("/delete")
     public String deleteItem(@RequestParam(required = false) Optional<Long> id) {
+        log.info("deleting element with id {}", id);
         editingService.deleteMenuItem(
                 id.orElse(
                         editingService.getRoot().getId()

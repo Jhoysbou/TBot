@@ -8,16 +8,15 @@ import java.util.List;
 public class MenuItem {
     private long id;
     private List<MenuItem> children = new ArrayList<>();
+    private MenuAttachmentsDto attachments;
     @JsonIgnore
     private MenuItem parent;
-    private List<Attachment> attachments;
     private String trigger;
     private String responseText;
 
     public MenuItem() {
 
     }
-
 
     public MenuItem(long id, MenuItem parent, String trigger, String responseText) {
         this.id = id;
@@ -71,11 +70,11 @@ public class MenuItem {
         this.responseText = responseText;
     }
 
-    public List<Attachment> getAttachments() {
+    public MenuAttachmentsDto getAttachments() {
         return attachments;
     }
 
-    public void setAttachments(List<Attachment> attachments) {
+    public void setAttachments(MenuAttachmentsDto attachments) {
         this.attachments = attachments;
     }
 }
