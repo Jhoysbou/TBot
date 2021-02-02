@@ -3,9 +3,7 @@ package com.jhoysbou.TBot.services.VkApi;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.jhoysbou.TBot.models.Message;
-import com.jhoysbou.TBot.models.vkmodels.ConfirmationCodeDAO;
 import com.jhoysbou.TBot.models.vkmodels.ConversationWrapper;
-import com.jhoysbou.TBot.services.VkApi.bodyhandlers.ConfirmationCodeBodyHandler;
 import com.jhoysbou.TBot.services.VkApi.bodyhandlers.ConversationWrapperBodyHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,20 +93,5 @@ public class VKApi implements GroupApi {
         HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
         log.info("message send response body is {} ", response.body());
     }
-
-    @Override
-    public String getConfirmationCode() throws IOException, InterruptedException {
-        String uri = URL + "groups.getCallbackConfirmationCode/?access_token=" + ACCESS_TOKEN
-                + "&group_id=" + GROUP_ID
-                + "&v=" + API_VERSION;
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(uri))
-                .GET()
-                .build();
-        HttpResponse<ConfirmationCodeDAO> response = client.send(request, new ConfirmationCodeBodyHandler());
-
-        return response.body().getCode();
-    }
-
 
 }

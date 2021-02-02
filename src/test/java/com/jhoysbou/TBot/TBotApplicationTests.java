@@ -13,28 +13,16 @@ import java.io.IOException;
 @SpringBootTest
 class TBotApplicationTests {
 	private final AttachmentExtractor extractor;
-	private final GroupApi api;
 
 	@Autowired
-	TBotApplicationTests(AttachmentExtractor extractor, GroupApi api) {
+	TBotApplicationTests(AttachmentExtractor extractor) {
 		this.extractor = extractor;
-		this.api = api;
 	}
 
 	@Test
 	void extractorTest() {
 		final String text = "https://vk.com/theormech?w=wall-8812367_2324\n text\n https://stackoverflow.com/questions/10601672/posting-url-with-string-parameter-that-contains-line-breaks-using-java/10601740";
 		MenuAttachmentsDto result = extractor.parse(text);
-	}
-
-	@Test
-	void confirmationCodeTest() {
-		try {
-			String code = api.getConfirmationCode();
-			System.out.println(code);
-		} catch (IOException | InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 
 }
