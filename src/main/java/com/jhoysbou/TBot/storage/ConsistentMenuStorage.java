@@ -38,12 +38,14 @@ public class ConsistentMenuStorage implements MenuStorage {
             root = restoreParents(dto.getMenuItem(), null);
             COUNTER = dto.getId();
         } else {
+            var responseText = "Привет!";
             root = new MenuItem(
                     COUNTER++,
                     null,
                     "start",
-                    "Привет!"
+                    responseText
             );
+            root.setAttachments(attachmentExtractor.parse(responseText));
         }
 
         PATH = path;
