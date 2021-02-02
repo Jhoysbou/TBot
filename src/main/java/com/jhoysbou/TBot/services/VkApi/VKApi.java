@@ -26,12 +26,9 @@ public class VKApi implements GroupApi {
     private final String ACCESS_TOKEN;
     private final HttpClient client;
     private final String API_VERSION;
-    private final String GROUP_ID;
 
     public VKApi(@Value("${vk.access.key}") String accessKey,
-                 @Value("${vk.api.version}") String api_version,
-                 @Value("${vk.group.id}") String groupId) {
-        GROUP_ID = groupId;
+                 @Value("${vk.api.version}") String api_version) {
         this.ACCESS_TOKEN = accessKey;
         API_VERSION = api_version;
         this.client = HttpClient.newHttpClient();
