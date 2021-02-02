@@ -60,6 +60,11 @@ public class DefaultFAQService implements FAQService {
         menuItem.ifPresent(item -> sendMessage(item, peers));
     }
 
+    @Override
+    public String getConfirmationCode() throws IOException, InterruptedException {
+        return api.getConfirmationCode();
+    }
+
     private void sendMessage(final MenuItem menuItem, final List<Long> peers) {
         final KeyboardDAO keyboard = makeKeyboard(menuItem);
         MenuAttachmentsDto attachments = menuItem.getAttachments();

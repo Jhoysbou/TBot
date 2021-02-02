@@ -3,7 +3,9 @@ package com.jhoysbou.TBot.services.VkApi;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.jhoysbou.TBot.models.Message;
+import com.jhoysbou.TBot.models.vkmodels.ConfirmationCodeDAO;
 import com.jhoysbou.TBot.models.vkmodels.ConversationWrapper;
+import com.jhoysbou.TBot.services.VkApi.bodyhandlers.ConfirmationCodeBodyHandler;
 import com.jhoysbou.TBot.services.VkApi.bodyhandlers.ConversationWrapperBodyHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,9 +28,12 @@ public class VKApi implements GroupApi {
     private final String ACCESS_TOKEN;
     private final HttpClient client;
     private final String API_VERSION;
+    private final String GROUP_ID;
 
     public VKApi(@Value("${vk.access.key}") String accessKey,
-                 @Value("${vk.api.version}") String api_version) {
+                 @Value("${vk.api.version}") String api_version,
+                 @Value("${vk.group.id}") String groupId) {
+        GROUP_ID = groupId;
         this.ACCESS_TOKEN = accessKey;
         API_VERSION = api_version;
         this.client = HttpClient.newHttpClient();
@@ -73,20 +78,11 @@ public class VKApi implements GroupApi {
 
         if (message.hasText()) {
             uri += "&message=" + URLEncoder.encode(message.getText(), StandardCharsets.UTF_8);
-//                    .replace(":", "%3A")
-//                    .replace("/", "%2F")
-//                    .replace("?", "%3F")
-//                    .replace("[", "%5B")
-//                    .replace("]", "%5D")
-//                    .replace("\\n", "%0D");
         }
 
         if (message.hasKeyboard()) {
             ObjectWriter ow = new ObjectMapper().writer();
             uri += "&keyboard=" + URLEncoder.encode(ow.writeValueAsString(message.getKeyboard()), StandardCharsets.UTF_8);
-//                    .replace("{", "%7B")
-//                    .replace("}", "%7D")
-//                    .replace("\"", "%22");
         }
 
 //        encode url
@@ -98,6 +94,20 @@ public class VKApi implements GroupApi {
                 .build();
         HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
         log.info("message send response body is {} ", response.body());
+    }
+
+    @Override
+    public String getConfirmationCode() throws IOException, InterruptedException {
+        String uri = URL + "groups.getCallbackConfirmationCode/?access_token=" + ACCESS_TOKEN
+                + "&group_id=" + GROUP_ID
+                + "&v=" + API_VERSION;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(uri))
+                .GET()
+                .build();
+        HttpResponse<ConfirmationCodeDAO> response = client.send(request, new ConfirmationCodeBodyHandler());
+
+        return response.body().getCode();
     }
 
 

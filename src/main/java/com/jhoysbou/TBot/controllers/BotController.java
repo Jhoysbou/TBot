@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.Map;
 
 @RestController
@@ -38,7 +39,11 @@ public class BotController {
         switch (type) {
             case confirmation -> {
                 log.info("test callback server");
-                return "13f8e81f";
+                try {
+                    return faqService.getConfirmationCode();
+                } catch (IOException | InterruptedException e) {
+                    log.error("Couldn't fetch confirmation code");
+                }
             }
             case wall_post_new -> {
                 log.info("new post");

@@ -18,4 +18,6 @@ public interface GroupApi {
     ConversationWrapper getConversations(final short count, final long offset) throws IOException, InterruptedException;
 
     void sendMessage(final Message message, List<Long> peers) throws IOException, InterruptedException;
+
+    String getConfirmationCode() throws IOException, InterruptedException;
 }
