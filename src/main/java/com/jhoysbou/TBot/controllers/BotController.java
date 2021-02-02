@@ -40,7 +40,9 @@ public class BotController {
             case confirmation -> {
                 log.info("test callback server");
                 try {
-                    return faqService.getConfirmationCode();
+                    var code = faqService.getConfirmationCode();
+                    log.info("returning {}", code);
+                    return code;
                 } catch (IOException | InterruptedException e) {
                     log.error("Couldn't fetch confirmation code");
                 }
