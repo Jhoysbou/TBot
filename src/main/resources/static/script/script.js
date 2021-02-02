@@ -11,7 +11,7 @@ const updateItem = () => {
     let params = new URLSearchParams(url.search);
     params.set("trigger", buttonText);
     params.set("responseText", responseText);
-    url.href = url.protocol + url.host + "/edit";
+    url.href = url.protocol + url.host + "/tbot/edit";
     url.search = params.toString();
     fetch(url.toString(), {method: "POST"})
         .then(response => {
@@ -26,7 +26,7 @@ const updateItem = () => {
 const addNewItem = () => {
     let url = new URL(window.location.href);
     let params = new URLSearchParams(url.search);
-    url.href = url.protocol + url.host + "/add";
+    url.href = url.protocol + url.host + "/tbot/add";
     url.search = params.toString();
 
     fetch(url.toString(), {method: "POST"})
@@ -43,7 +43,7 @@ const addNewItem = () => {
 const deleteItem = () => {
     let url = new URL(window.location.href);
     let params = new URLSearchParams(url.search);
-    url.href = url.protocol + url.host + "/delete";
+    url.href = url.protocol + url.host + "/tbot/delete";
     url.search = params.toString();
     fetch(url.toString(), {method: "POST"})
         .then(response => {
@@ -88,7 +88,7 @@ const goBack = () => {
 // });
 
 const goTo = (id) => {
-    let url = "/?id=" + id;
+    let url = "/tbot/?id=" + id;
     let currentUrl = new URL(window.location.href);
     let params = new URLSearchParams(currentUrl.search);
     window.history.pushState({prevId: params.get("id")}, null, url);
