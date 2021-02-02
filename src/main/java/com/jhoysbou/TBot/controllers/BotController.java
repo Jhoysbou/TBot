@@ -10,12 +10,12 @@ import com.jhoysbou.TBot.services.NotificationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
 import java.util.Map;
 
 @RestController
@@ -24,11 +24,14 @@ public class BotController {
     private static final Logger log = LoggerFactory.getLogger(BotController.class);
     private final NotificationService notificationService;
     private final FAQService faqService;
+    private final String confirmationCode;
 
     @Autowired
-    public BotController(NotificationService notificationService, FAQService faqService) {
+    public BotController(NotificationService notificationService, FAQService faqService,
+                         @Value("${vk.group.confirmationCode}") String confirmationCode) {
         this.notificationService = notificationService;
         this.faqService = faqService;
+        this.confirmationCode = confirmationCode;
     }
 
     @PostMapping
@@ -39,13 +42,7 @@ public class BotController {
         switch (type) {
             case confirmation -> {
                 log.info("test callback server");
-                try {
-                    var code = faqService.getConfirmationCode();
-                    log.info("returning {}", code);
-                    return code;
-                } catch (IOException | InterruptedException e) {
-                    log.error("Couldn't fetch confirmation code");
-                }
+                return confirmationCode;
             }
             case wall_post_new -> {
                 log.info("new post");
