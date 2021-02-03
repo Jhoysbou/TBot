@@ -26,17 +26,17 @@ public class DefaultMessageService implements MessageService {
     private final GroupApi api;
     private final MenuStorage menuStorage;
     private final HashtagParser hashtagParser;
-    private final TopicStorage preferenceStorage;
+    private final TopicStorage subscriptionStorage;
 
     @Autowired
     public DefaultMessageService(GroupApi api,
                                  @Qualifier(value = "consistentMenuStorage") MenuStorage menuStorage,
                                  HashtagParser hashtagParser,
-                                 TopicStorage preferenceStorage) {
+                                 TopicStorage subscriptionStorage) {
         this.api = api;
         this.menuStorage = menuStorage;
         this.hashtagParser = hashtagParser;
-        this.preferenceStorage = preferenceStorage;
+        this.subscriptionStorage = subscriptionStorage;
     }
 
     @Override
@@ -86,7 +86,7 @@ public class DefaultMessageService implements MessageService {
         Optional<MenuItem> menuItem = menuStorage.getMenuByText(text);
 
         if (hashtag.equals(ServicePreferenceTag.ALL)) {
-            preferenceStorage.addAllPreferenceToUser(userId);
+            subscriptionStorage.addAllPreferenceToUser(userId);
             menuItem.ifPresent(item -> {
                 sendMessage(
                         "Вы успешно подписались на все категории!",
@@ -95,7 +95,7 @@ public class DefaultMessageService implements MessageService {
                 );
             });
         } else if (hashtag.equals(ServicePreferenceTag.NONE)) {
-            preferenceStorage.deleteAllPreferencesFromUser(userId);
+            subscriptionStorage.deleteAllPreferencesFromUser(userId);
             menuItem.ifPresent(item -> {
                 sendMessage(
                         "Вы успешно отписались от всех категорий",
@@ -103,8 +103,8 @@ public class DefaultMessageService implements MessageService {
                         List.of(userId)
                 );
             });
-        } else if (preferenceStorage.getByTag(hashtag).contains(userId)) {
-            preferenceStorage.deletePreferenceFromUser(hashtag, userId);
+        } else if (subscriptionStorage.getByTag(hashtag).contains(userId)) {
+            subscriptionStorage.deletePreferenceFromUser(hashtag, userId);
             menuItem.ifPresent(item -> {
                 sendMessage(
                         "Вы успешно отписались от категории " + item.getTrigger(),
@@ -114,7 +114,7 @@ public class DefaultMessageService implements MessageService {
             });
 
         } else {
-            preferenceStorage.addPreferenceToUser(hashtag, userId);
+            subscriptionStorage.addPreferenceToUser(hashtag, userId);
             menuItem.ifPresent(item -> {
                 sendMessage(
                         "Вы успешно подписались на категорию " + item.getTrigger(),
@@ -148,7 +148,7 @@ public class DefaultMessageService implements MessageService {
         String text = attachments.getText();
         AtomicReference<String> topics = new AtomicReference<>();
 
-        preferenceStorage.getTopicsByUser(peer)
+        subscriptionStorage.getTopicsByUser(peer)
                 .stream()
                 .map(menuStorage::getMenuByResponseText)
                 .filter(Optional::isPresent)

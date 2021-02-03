@@ -15,15 +15,15 @@ import java.util.Optional;
 @Service
 public class DefaultEditingService implements EditingService {
     private final MenuStorage storage;
-    private final TopicStorage preferenceStorage;
+    private final TopicStorage subscriptionStorage;
     private final HashtagParser hashtagParser;
 
     @Autowired
     public DefaultEditingService(@Qualifier(value = "consistentMenuStorage") MenuStorage storage,
-                                 TopicStorage preferenceStorage,
+                                 TopicStorage subscriptionStorage,
                                  HashtagParser hashtagParser) {
         this.storage = storage;
-        this.preferenceStorage = preferenceStorage;
+        this.subscriptionStorage = subscriptionStorage;
         this.hashtagParser = hashtagParser;
     }
 
@@ -50,7 +50,7 @@ public class DefaultEditingService implements EditingService {
                     var tag = hashtag.get();
 //                Do not save service tags
                     if (!tag.equals(ServicePreferenceTag.ALL) && !tag.equals(ServicePreferenceTag.NONE)) {
-                        preferenceStorage.addNewPreference(hashtag.get());
+                        subscriptionStorage.addNewPreference(hashtag.get());
                     }
                 } else {
                     throw new UnsupportedOperationException("Changing topic names is not supported");
@@ -79,7 +79,7 @@ public class DefaultEditingService implements EditingService {
         var menuItem = storage.getMenuById(id);
         menuItem.ifPresent(item -> {
             var hashtag = hashtagParser.parse(Optional.ofNullable(item.getResponseText()));
-            hashtag.ifPresent(preferenceStorage::deletePreference);
+            hashtag.ifPresent(subscriptionStorage::deletePreference);
         });
         storage.deleteMenuItem(
                 storage.getMenuById(id).orElseThrow(NoSuchElementException::new)

@@ -2,7 +2,6 @@ package com.jhoysbou.TBot.services;
 
 import com.jhoysbou.TBot.models.Attachment;
 import com.jhoysbou.TBot.models.Message;
-import com.jhoysbou.TBot.models.Topic;
 import com.jhoysbou.TBot.models.vkmodels.GroupEventDAO;
 import com.jhoysbou.TBot.models.vkmodels.WallPostDAO;
 import com.jhoysbou.TBot.services.VkApi.GroupApi;
@@ -25,17 +24,17 @@ public class DefaultNotificationService implements NotificationService {
     private final TopicStorage storage;
     private final GroupApi api;
     private final HashtagParser hashtagParser;
-    private final TopicStorage preferenceStorage;
+    private final TopicStorage subscriptionStorage;
 
     @Autowired
     public DefaultNotificationService(TopicStorage storage,
                                       GroupApi api,
                                       HashtagParser hashtagParser,
-                                      TopicStorage preferenceStorage) {
+                                      TopicStorage subscriptionStorage) {
         this.storage = storage;
         this.api = api;
         this.hashtagParser = hashtagParser;
-        this.preferenceStorage = preferenceStorage;
+        this.subscriptionStorage = subscriptionStorage;
     }
 
     @Override
@@ -43,7 +42,7 @@ public class DefaultNotificationService implements NotificationService {
         var text = event.getObject().getText();
         var hashtag = hashtagParser.parse(Optional.ofNullable(text));
         hashtag.ifPresent(tag -> {
-            Set<Long> peers = preferenceStorage.getByTag(tag);
+            Set<Long> peers = subscriptionStorage.getByTag(tag);
             if (peers.size() > 0) {
                 final Message message = new Message();
                 message.setText("");
