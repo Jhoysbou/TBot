@@ -43,3 +43,4 @@ out/
 /src/main/resources/application.properties
 /logs/
 /src/main/resources/storage/
+/src/main/resources/login.properties

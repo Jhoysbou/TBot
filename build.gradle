@@ -18,6 +18,11 @@ dependencies {
 	compile("org.slf4j:slf4j-api:1.7.26")
 	compile("ch.qos.logback:logback-classic:1.2.3")
 
+	//    Spring security
+	compile group: 'org.springframework.security', name: 'spring-security-core', version: '5.4.2'
+	compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.4.2'
+	compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.4.2'
+
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
