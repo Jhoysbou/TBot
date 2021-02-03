@@ -6,8 +6,9 @@ import com.jhoysbou.TBot.models.Message;
 import com.jhoysbou.TBot.models.vkmodels.*;
 import com.jhoysbou.TBot.services.VkApi.GroupApi;
 import com.jhoysbou.TBot.storage.MenuStorage;
-import com.jhoysbou.TBot.storage.NewsPreferenceStorage;
+import com.jhoysbou.TBot.storage.TopicStorage;
 import com.jhoysbou.TBot.utils.HashtagParser;
+import com.jhoysbou.TBot.utils.ServicePreferenceTag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 public class DefaultMessageService implements MessageService {
@@ -24,13 +26,13 @@ public class DefaultMessageService implements MessageService {
     private final GroupApi api;
     private final MenuStorage menuStorage;
     private final HashtagParser hashtagParser;
-    private final NewsPreferenceStorage preferenceStorage;
+    private final TopicStorage preferenceStorage;
 
     @Autowired
     public DefaultMessageService(GroupApi api,
                                  @Qualifier(value = "consistentMenuStorage") MenuStorage menuStorage,
                                  HashtagParser hashtagParser,
-                                 NewsPreferenceStorage preferenceStorage) {
+                                 TopicStorage preferenceStorage) {
         this.api = api;
         this.menuStorage = menuStorage;
         this.hashtagParser = hashtagParser;
@@ -42,18 +44,29 @@ public class DefaultMessageService implements MessageService {
         final MessageDAO message = event.getObject().getMessage();
         final long peer = message.getFrom_id();
         final String text = message.getText().toLowerCase(Locale.ROOT);
-        final var payload = message.getPayload();
-        var hashtag = hashtagParser.parse(Optional.ofNullable(payload));
+
+        Optional<MenuItem> menuItem = menuStorage.getMenuByText(text);
+        Optional<String> hashtag = Optional.empty();
+
+        if (menuItem.isPresent()) {
+            hashtag = hashtagParser
+                    .parse(
+                            Optional.ofNullable(
+                                    menuItem.get().getResponseText()
+                            )
+                    );
+        }
+
 
         if (hashtag.isPresent()) {
             handlePreference(hashtag.get(), peer, text);
         } else if (text.equals(ControlButton.HOME)) {
-            sendMessage(menuStorage.getRoot(), List.of(peer));
+            sendMessage(menuStorage.getRoot(), peer);
         } else if (text.equals(ControlButton.BACK)) {
             MenuItem currentMenuItem = menuStorage
                     .getMenuById(
                             Long.parseLong(
-                                    Optional.ofNullable(payload).orElse("0")
+                                    Optional.ofNullable(message.getPayload()).orElse("0")
                             )
                     )
                     .orElseThrow(NoSuchElementException::new);
@@ -62,19 +75,18 @@ public class DefaultMessageService implements MessageService {
             if (parent == null) {
                 parent = menuStorage.getRoot();
             }
-            sendMessage(parent, List.of(peer));
+            sendMessage(parent, peer);
         } else {
-            Optional<MenuItem> menuItem = menuStorage.getMenuByText(text);
 
-            menuItem.ifPresent(item -> sendMessage(item, List.of(peer)));
+            menuItem.ifPresent(item -> sendMessage(item, peer));
         }
     }
 
     private void handlePreference(final String hashtag, final long userId, final String text) {
         Optional<MenuItem> menuItem = menuStorage.getMenuByText(text);
 
-        if (hashtag.equals("#addall")) {
-            preferenceStorage.addAllPreference(userId);
+        if (hashtag.equals(ServicePreferenceTag.ALL)) {
+            preferenceStorage.addAllPreferenceToUser(userId);
             menuItem.ifPresent(item -> {
                 sendMessage(
                         "Вы успешно подписались на все категории!",
@@ -82,8 +94,8 @@ public class DefaultMessageService implements MessageService {
                         List.of(userId)
                 );
             });
-        } else if (hashtag.equals("#delall")) {
-            preferenceStorage.deleteAllPreferences(userId);
+        } else if (hashtag.equals(ServicePreferenceTag.NONE)) {
+            preferenceStorage.deleteAllPreferencesFromUser(userId);
             menuItem.ifPresent(item -> {
                 sendMessage(
                         "Вы успешно отписались от всех категорий",
@@ -92,7 +104,7 @@ public class DefaultMessageService implements MessageService {
                 );
             });
         } else if (preferenceStorage.getByTag(hashtag).contains(userId)) {
-            preferenceStorage.deletePreference(hashtag, userId);
+            preferenceStorage.deletePreferenceFromUser(hashtag, userId);
             menuItem.ifPresent(item -> {
                 sendMessage(
                         "Вы успешно отписались от категории " + item.getTrigger(),
@@ -102,7 +114,7 @@ public class DefaultMessageService implements MessageService {
             });
 
         } else {
-            preferenceStorage.addPreference(hashtag, userId);
+            preferenceStorage.addPreferenceToUser(hashtag, userId);
             menuItem.ifPresent(item -> {
                 sendMessage(
                         "Вы успешно подписались на категорию " + item.getTrigger(),
@@ -130,11 +142,32 @@ public class DefaultMessageService implements MessageService {
 
     }
 
-    private void sendMessage(final MenuItem menuItem, final List<Long> peers) {
+    private void sendMessage(final MenuItem menuItem, final Long peer) {
         final KeyboardDAO keyboard = makeKeyboard(menuItem);
         MenuAttachmentsDto attachments = menuItem.getAttachments();
+        String text = attachments.getText();
+        AtomicReference<String> topics = new AtomicReference<>();
+
+        preferenceStorage.getTopicsByUser(peer)
+                .stream()
+                .map(menuStorage::getMenuByResponseText)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .map(MenuItem::getTrigger)
+                .reduce((acc, cur) -> acc + ", " + cur)
+                .ifPresentOrElse(
+                        mergedTopics -> topics.set("Сейчас ты подписан на " + mergedTopics),
+                        () -> topics.set("Пока ты ни на что не подписан(")
+                );
+
+//      Checking tag to print all user's subscriptions
+        text = text.replace(
+                ServicePreferenceTag.TOPICS,
+                topics.get()
+        );
+
         try {
-            api.sendMessage(new Message(attachments.getText(), attachments.getAttachments(), keyboard), peers);
+            api.sendMessage(new Message(text, attachments.getAttachments(), keyboard), List.of(peer));
         } catch (IOException | InterruptedException e) {
             log.error("Couldn't send message", e);
         }

@@ -12,18 +12,16 @@ import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Component
-public class ConsistentDistinctNewsPreferenceStorage implements NewsPreferenceStorage, Closeable {
-    private static final Logger log = LoggerFactory.getLogger(ConsistentDistinctNewsPreferenceStorage.class);
+public class ConsistentDistinctTopicStorage implements TopicStorage, Closeable {
+    private static final Logger log = LoggerFactory.getLogger(ConsistentDistinctTopicStorage.class);
     private static Map<String, Set<Long>> storage;
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final File file;
 
-    public ConsistentDistinctNewsPreferenceStorage(
+    public ConsistentDistinctTopicStorage(
             @Value("${preference.storage.path}") String path) throws IOException {
         file = Paths.get(path).toFile();
 
@@ -41,7 +39,28 @@ public class ConsistentDistinctNewsPreferenceStorage implements NewsPreferenceSt
     }
 
     @Override
-    public void addPreference(String tag, long userId) {
+    public List<String> getTopicsByUser(long userId) {
+        List<String> topicsByUser = new ArrayList<>();
+        storage.forEach((topic, users) -> {
+            if (users.contains(userId)) {
+                topicsByUser.add(topic);
+            }
+        });
+        return topicsByUser;
+    }
+
+    @Override
+    public void addNewPreference(String tag) {
+        storage.put(tag, new HashSet<>());
+    }
+
+    @Override
+    public void deletePreference(String tag) {
+        storage.remove(tag);
+    }
+
+    @Override
+    public void addPreferenceToUser(String tag, long userId) {
         var users = getByTag(tag);
         users.add(userId);
         try {
@@ -52,7 +71,7 @@ public class ConsistentDistinctNewsPreferenceStorage implements NewsPreferenceSt
     }
 
     @Override
-    public void addAllPreference(long userId) {
+    public void addAllPreferenceToUser(long userId) {
         storage.forEach((tag, users) -> users.add(userId));
         try {
             save();
@@ -62,7 +81,7 @@ public class ConsistentDistinctNewsPreferenceStorage implements NewsPreferenceSt
     }
 
     @Override
-    public void deletePreference(String tag, long userId) {
+    public void deletePreferenceFromUser(String tag, long userId) {
         storage.get(tag).remove(userId);
         try {
             save();
@@ -72,7 +91,7 @@ public class ConsistentDistinctNewsPreferenceStorage implements NewsPreferenceSt
     }
 
     @Override
-    public void deleteAllPreferences(long userId) {
+    public void deleteAllPreferencesFromUser(long userId) {
         storage.forEach((tag, users) -> users.remove(userId));
         try {
             save();

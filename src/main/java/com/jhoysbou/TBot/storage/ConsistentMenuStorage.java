@@ -147,6 +147,11 @@ public class ConsistentMenuStorage implements MenuStorage {
     }
 
     @Override
+    public Optional<MenuItem> getMenuByResponseText(String response) {
+        return findByResponse(root, response);
+    }
+
+    @Override
     public Optional<MenuItem> getMenuById(long id) {
         return find(root, id);
     }
@@ -177,6 +182,22 @@ public class ConsistentMenuStorage implements MenuStorage {
         for (MenuItem item : currentItem.getChildren()) {
 
             Optional<MenuItem> result = find(item, text);
+            if (result.isPresent()) {
+                return result;
+            }
+        }
+
+        return Optional.empty();
+    }
+
+    private Optional<MenuItem> findByResponse(final MenuItem currentItem, final String text) {
+        if (currentItem.getResponseText().strip().toLowerCase(Locale.ROOT).equals(text.strip().toLowerCase(Locale.ROOT))) {
+            return Optional.of(currentItem);
+        }
+
+        for (MenuItem item : currentItem.getChildren()) {
+
+            Optional<MenuItem> result = findByResponse(item, text);
             if (result.isPresent()) {
                 return result;
             }

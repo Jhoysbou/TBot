@@ -20,5 +20,7 @@ public interface MenuStorage {
 
     Optional<MenuItem> getMenuByText(final String text);
 
+    Optional<MenuItem> getMenuByResponseText(final String response);
+
     Optional<MenuItem> getMenuById(final long id);
 }
