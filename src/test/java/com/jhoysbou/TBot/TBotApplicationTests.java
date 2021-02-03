@@ -1,14 +1,10 @@
 package com.jhoysbou.TBot;
 
 import com.jhoysbou.TBot.models.MenuAttachmentsDto;
-import com.jhoysbou.TBot.services.VkApi.GroupApi;
 import com.jhoysbou.TBot.utils.AttachmentExtractor;
-import com.jhoysbou.TBot.utils.SimpleAttachmentExtractor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.io.IOException;
 
 @SpringBootTest
 class TBotApplicationTests {

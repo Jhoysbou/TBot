@@ -28,7 +28,7 @@ public class WebController {
     @GetMapping
     public String index(@RequestParam(required = false) Optional<Long> id,
                         final Model model) {
-        log.info("index page accessed");
+        log.info("index page accessed with id = {}", id);
         MenuItem item = editingService.getRoot();
 
         if (id.isPresent()) {

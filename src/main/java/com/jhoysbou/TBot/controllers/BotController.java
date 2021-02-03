@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jhoysbou.TBot.models.vkmodels.GroupEventDAO;
 import com.jhoysbou.TBot.models.vkmodels.NewMessageWrapper;
 import com.jhoysbou.TBot.models.vkmodels.WallPostDAO;
-import com.jhoysbou.TBot.services.FAQService;
+import com.jhoysbou.TBot.services.MessageService;
 import com.jhoysbou.TBot.services.NotificationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,14 +23,14 @@ import java.util.Map;
 public class BotController {
     private static final Logger log = LoggerFactory.getLogger(BotController.class);
     private final NotificationService notificationService;
-    private final FAQService faqService;
+    private final MessageService messageService;
     private final String confirmationCode;
 
     @Autowired
-    public BotController(NotificationService notificationService, FAQService faqService,
+    public BotController(NotificationService notificationService, MessageService messageService,
                          @Value("${vk.group.confirmationCode}") String confirmationCode) {
         this.notificationService = notificationService;
-        this.faqService = faqService;
+        this.messageService = messageService;
         this.confirmationCode = confirmationCode;
     }
 
@@ -61,8 +61,7 @@ public class BotController {
                         new TypeReference<GroupEventDAO<NewMessageWrapper>>() {
                         }
                 );
-                notificationService.newMessage(event);
-                faqService.handleMessage(event);
+                messageService.handleMessage(event);
             }
         }
 

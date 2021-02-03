@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Component
-public class SimpleAttachmentExtractor implements AttachmentExtractor {
+public class RegexAttachmentExtractor implements AttachmentExtractor {
     private final Pattern urlPattern = Pattern.compile("https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)");
     private final Pattern pattern = Pattern.compile("((photo)|(video)|(audio)|(doc)|(wall)|(market)|(poll))-*\\d+_\\d+");
 

@@ -2,6 +2,7 @@ package com.jhoysbou.TBot.services;
 
 import com.jhoysbou.TBot.models.MenuItem;
 import com.jhoysbou.TBot.storage.MenuStorage;
+import com.jhoysbou.TBot.storage.NewsPreferenceStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -12,10 +13,13 @@ import java.util.Optional;
 @Service
 public class DefaultEditingService implements EditingService {
     private final MenuStorage storage;
+    private final NewsPreferenceStorage preferenceStorage;
 
     @Autowired
-    public DefaultEditingService(@Qualifier(value = "consistentMenuStorage") MenuStorage storage) {
+    public DefaultEditingService(@Qualifier(value = "consistentMenuStorage") MenuStorage storage,
+                                 NewsPreferenceStorage preferenceStorage) {
         this.storage = storage;
+        this.preferenceStorage = preferenceStorage;
     }
 
     @Override
