@@ -38,7 +38,7 @@ out/
 
 
 ### Ngrok ###
-./ngrok
+ngrok
 
 /src/main/resources/application.properties
 /logs/
