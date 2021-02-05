@@ -5,7 +5,7 @@ import com.jhoysbou.TBot.models.Message;
 import com.jhoysbou.TBot.models.vkmodels.GroupEventDAO;
 import com.jhoysbou.TBot.models.vkmodels.WallPostDAO;
 import com.jhoysbou.TBot.services.VkApi.GroupApi;
-import com.jhoysbou.TBot.storage.TopicStorage;
+import com.jhoysbou.TBot.storages.TopicStorage;
 import com.jhoysbou.TBot.utils.HashtagParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

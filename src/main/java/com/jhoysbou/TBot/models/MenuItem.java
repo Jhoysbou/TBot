@@ -18,6 +18,11 @@ public class MenuItem {
 
     }
 
+    public MenuItem(String trigger, String responseText) {
+        this.trigger = trigger;
+        this.responseText = responseText;
+    }
+
     public MenuItem(long id, MenuItem parent, String trigger, String responseText) {
         this.id = id;
         this.parent = parent;

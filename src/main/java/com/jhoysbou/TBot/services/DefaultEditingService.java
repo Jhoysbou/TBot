@@ -1,10 +1,11 @@
 package com.jhoysbou.TBot.services;
 
 import com.jhoysbou.TBot.models.MenuItem;
-import com.jhoysbou.TBot.storage.MenuStorage;
-import com.jhoysbou.TBot.storage.TopicStorage;
+import com.jhoysbou.TBot.storages.MenuStorage;
+import com.jhoysbou.TBot.storages.TopicStorage;
 import com.jhoysbou.TBot.utils.HashtagParser;
 import com.jhoysbou.TBot.utils.ServicePreferenceTag;
+import com.jhoysbou.TBot.utils.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -38,7 +39,7 @@ public class DefaultEditingService implements EditingService {
     }
 
     @Override
-    public void updateMenuItem(long id, Optional<String> trigger, Optional<String> responseText) {
+    public void updateMenuItem(long id, Optional<String> trigger, Optional<String> responseText) throws ValidationException {
         responseText.ifPresent(response -> {
             var menuItem = storage.getMenuById(id).orElseThrow(NoSuchElementException::new);
             var hashtag = hashtagParser.parse(responseText);
@@ -66,7 +67,7 @@ public class DefaultEditingService implements EditingService {
     }
 
     @Override
-    public void createNewMenuItem(final long parentId) {
+    public void createNewMenuItem(final long parentId) throws ValidationException {
         storage.createMenuItem(
                 Optional.of(getMenuItemById(parentId)),
                 "",

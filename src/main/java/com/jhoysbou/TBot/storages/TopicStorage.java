@@ -1,4 +1,4 @@
-package com.jhoysbou.TBot.storage;
+package com.jhoysbou.TBot.storages;
 
 import java.util.List;
 import java.util.Set;

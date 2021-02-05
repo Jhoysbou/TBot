@@ -2,9 +2,12 @@ package com.jhoysbou.TBot.controllers;
 
 import com.jhoysbou.TBot.models.MenuItem;
 import com.jhoysbou.TBot.services.EditingService;
+import com.jhoysbou.TBot.utils.validation.ValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,26 +45,46 @@ public class WebController {
 
 
     @PostMapping("/edit")
-    public String editItem(@RequestParam(required = false) Optional<Long> id,
-                           @RequestParam(required = false) Optional<String> trigger,
-                           @RequestParam(required = false) Optional<String> responseText) {
+    public ResponseEntity<String> editItem(@RequestParam(required = false) Optional<Long> id,
+                                           @RequestParam(required = false) Optional<String> trigger,
+                                           @RequestParam(required = false) Optional<String> responseText,
+                                           Model model) {
         log.info("editing item {} with trigger {} and responseText {}", id, trigger, responseText);
-        editingService.updateMenuItem(
-                id.orElse(editingService.getRoot().getId()),
-                trigger,
-                responseText);
-        return "redirect:/";
+        try {
+            editingService.updateMenuItem(
+                    id.orElse(editingService.getRoot().getId()),
+                    trigger,
+                    responseText);
+        } catch (ValidationException e) {
+            log.info("Validation exception: {}", e.getMessage());
+            return ResponseEntity
+                    .status(HttpStatus.NOT_ACCEPTABLE)
+                    .body(e.getMessage());
+        }
+        return ResponseEntity
+                .status(HttpStatus.ACCEPTED)
+                .body("redirect:/");
     }
 
     @PostMapping("/add")
-    public String createItem(@RequestParam(required = false) Optional<Long> id) {
+    public ResponseEntity<String> createItem(@RequestParam(required = false) Optional<Long> id) {
         log.info("creating new element parent = {}", id);
-        editingService.createNewMenuItem(
-                id.orElse(
-                        editingService.getRoot().getId()
-                )
-        );
-        return "redirect:/";
+        try {
+            editingService.createNewMenuItem(
+                    id.orElse(
+                            editingService.getRoot().getId()
+                    )
+            );
+        } catch (ValidationException e) {
+            log.info("Validation exception {}", e.getMessage());
+            return ResponseEntity
+                    .status(HttpStatus.NOT_ACCEPTABLE)
+                    .body(e.getMessage());
+        }
+
+        return ResponseEntity
+                .status(HttpStatus.ACCEPTED)
+                .body("redirect:/");
     }
 
     @PostMapping("/delete")

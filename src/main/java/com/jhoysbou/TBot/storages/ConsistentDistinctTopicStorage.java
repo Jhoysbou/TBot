@@ -1,4 +1,4 @@
-package com.jhoysbou.TBot.storage;
+package com.jhoysbou.TBot.storages;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

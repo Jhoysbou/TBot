@@ -1,10 +1,12 @@
-package com.jhoysbou.TBot.storage;
+package com.jhoysbou.TBot.storages;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jhoysbou.TBot.models.MenuAttachmentsDto;
 import com.jhoysbou.TBot.models.MenuItem;
 import com.jhoysbou.TBot.models.MenuItemStorageDto;
 import com.jhoysbou.TBot.utils.AttachmentExtractor;
+import com.jhoysbou.TBot.utils.validation.ValidationException;
+import com.jhoysbou.TBot.utils.validation.Validator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +29,15 @@ public class ConsistentMenuStorage implements MenuStorage {
     private final MenuItem root;
     private final AttachmentExtractor attachmentExtractor;
     private final ObjectMapper objectMapper = new ObjectMapper();
+    private final Validator<MenuItem> validator;
 
     @Autowired
     public ConsistentMenuStorage(@Value("${menu.storage.path}") String path,
-                                 AttachmentExtractor attachmentExtractor) throws IOException {
+                                 AttachmentExtractor attachmentExtractor,
+                                 Validator<MenuItem> validator) throws IOException {
+
         this.attachmentExtractor = attachmentExtractor;
+        this.validator = validator;
         File file = Paths.get(path).toFile();
         if (file.exists()) {
             MenuItemStorageDto dto = objectMapper.readValue(file, MenuItemStorageDto.class);
@@ -61,7 +67,7 @@ public class ConsistentMenuStorage implements MenuStorage {
     }
 
     @Override
-    public MenuItem createMenuItem(Optional<MenuItem> parent, String trigger, String responseText) {
+    public MenuItem createMenuItem(Optional<MenuItem> parent, String trigger, String responseText) throws ValidationException {
         MenuItem parentItem = root;
         if (parent.isPresent()) {
             parentItem = parent.get();
@@ -71,6 +77,12 @@ public class ConsistentMenuStorage implements MenuStorage {
         MenuAttachmentsDto attachments = attachmentExtractor.parse(responseText);
         item.setAttachments(attachments);
         parentItem.getChildren().add(item);
+        try {
+            validator.validate(parentItem);
+        } catch (ValidationException e) {
+            parentItem.getChildren().remove(item);
+            throw e;
+        }
 
         try {
             save();
@@ -99,9 +111,12 @@ public class ConsistentMenuStorage implements MenuStorage {
     @Override
     public MenuItem updateMenuItem(long id,
                                    String trigger,
-                                   String responseText) throws NoSuchElementException {
+                                   String responseText) throws NoSuchElementException, ValidationException {
         final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
         MenuAttachmentsDto attachments = attachmentExtractor.parse(responseText);
+
+        validator.validate(new MenuItem(trigger, responseText));
+
         item.setAttachments(attachments);
         item.setTrigger(trigger);
         item.setResponseText(responseText);

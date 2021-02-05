@@ -4,7 +4,6 @@ SUCCESS_ALERT = document.getElementById("success_alert");
 ERROR_ALERT = document.getElementById("error_alert");
 
 const updateItem = () => {
-    debugger
     const buttonText = buttonTextInput.value;
     const responseText = responseTextInput.value;
     let url = new URL(window.location.href);
@@ -15,10 +14,12 @@ const updateItem = () => {
     url.search = params.toString();
     fetch(url.toString(), {method: "POST"})
         .then(response => {
+            debugger
             if (response.ok) {
                 showSuccessAlert();
             } else {
-                showErrorAlert();
+                response.text()
+                    .then(showErrorAlert)
             }
         });
 };
@@ -34,7 +35,8 @@ const addNewItem = () => {
             if (response.ok) {
                 location.reload();
             } else {
-                showErrorAlert();
+                response.text()
+                    .then(showErrorAlert);
             }
 
         });
@@ -62,30 +64,20 @@ const showSuccessAlert = () => {
     }, 1000);
 };
 
-const showErrorAlert = () => {
+const showErrorAlert = (text) => {
     SUCCESS_ALERT.style.display = "none";
     ERROR_ALERT.style.display = 'block';
+    ERROR_ALERT.innerText = 'Error! ' + text;
     setTimeout(() => {
         SUCCESS_ALERT.style.display = "block";
         ERROR_ALERT.style.display = 'none';
+        ERROR_ALERT.innerText = ""
     }, 1000);
 }
 
 const goBack = () => {
     window.history.back();
 };
-
-// for the pretty alerts after reload
-// document.addEventListener("DOMContentLoaded", function (event) {
-//     if (window.location.hash === "#SUCCESS") {
-//         showSuccessAlert();
-//         window.location.hash = "";
-//
-//     } else if (window.location.hash === "#ERROR") {
-//         showErrorAlert();
-//         window.location.hash = "";
-//     }
-// });
 
 const goTo = (id) => {
     let url = "/tbot/?id=" + id;

@@ -1,4 +1,4 @@
-package com.jhoysbou.TBot.storage;
+package com.jhoysbou.TBot.storages;
 
 import com.jhoysbou.TBot.models.MenuItem;
 import org.springframework.stereotype.Component;
