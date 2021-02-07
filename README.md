@@ -15,6 +15,7 @@ The navigation system has no strict limitation except VK's ones:
 
 All information and the navigation structure has a consistent storage.
 
+## Features
 ### Notification system
 ![](img/notification.png)
 The advanced customizable notification system based on tags.\
@@ -32,7 +33,6 @@ The system has a limitation – a name of a topic cannot be changed as well as a
 You must delete and create a new topic to change it. With topic deletion the users' subscriptions
 will be deleted as well.
 
-## Features
 ### Native attachments sending
 The bot can parse vk urls with some attachment and natively send it.
 To add an attachment you need just add a link somewhere in a response message. 
