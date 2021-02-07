@@ -15,6 +15,23 @@ The navigation system has no strict limitation except VK's ones:
 
 All information and the navigation structure has a consistent storage.
 
+### Notification system
+![](img/notification.png)
+The advanced customizable notification system based on tags.\
+Every post in a group with this bot will be searched for a tag – `#sciense`,
+for example – and if an existing tag was found, the bot will send to subscribed users a message with the post.
+To subscribe, a user must press a button with a tag in the `Response message` field.
+![](img/example.png)
+The structure of subscription menu is fully customizable and can have nested options.
+There are some service tags:
+- `#all` – User will be subscribed to all topics.
+- `#none` - User will be unsubscribed from all topics.
+- `{topics}` – This special tag will print all user's subscriptions.
+
+The system has a limitation – a name of a topic cannot be changed as well as a tag itself.
+You must delete and create a new topic to change it. With topic deletion the users' subscriptions
+will be deleted as well.
+
 ## Features
 ### Native attachments sending
 The bot can parse vk urls with some attachment and natively send it.
@@ -27,22 +44,6 @@ It supports:
 - doc – document
 - wall – wall post
 
-### Notification system 
-![](img/notification.png)
-The advanced customizable notification system based on tags.\
-Every post in a group with this bot will be searched for a tag – `#sciense`, 
-for example – and if an existing tag was found, the bot will send to subscribed users a message with the post.
-To subscribe, a user must press a button with a tag in the `Response message` field.
-![](img/example.png)
-The structure of subscription menu is fully customizable and can have nested options.
-There are some service tags:
-- `#all` – User will be subscribed to all topics.
-- `#none` - User will be unsubscribed from all topics.
-- `{topics}` – This special tag will print all user's subscriptions.
-
-The system has a limitation – a name of a topic cannot be changed as well as a tag itself.
-You must delete and create a new topic to change it. With topic deletion the users' subscriptions
-will be deleted as well. 
 
 ## Technical details
 The bot was written in Java with Spring Framework. It uses the VK callback api. 
