@@ -3,7 +3,7 @@ A customizable bot for VK. The bot was made for [Theormech VK group](https://vk.
 ![](img/dialog.png)
 ## About
 The bot has a navigation system, developed to be driven by the bot keyboard,
-but also can be used with a text input. The navigation system is stateless, 
+but also can be used with a text input. The navigation system is stateless 
 and fully customizable. The customization implemented with a web interface
 ![](img/web_page.png)
 This allows to edit Q&A system seamlessly without any delay. 
