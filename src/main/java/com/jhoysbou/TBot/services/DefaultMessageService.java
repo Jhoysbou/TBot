@@ -175,11 +175,11 @@ public class DefaultMessageService implements MessageService {
 
     private KeyboardDAO makeKeyboard(final MenuItem item) {
         final KeyboardDAO keyboard = new KeyboardDAO();
-        keyboard.setInline(false);
-        keyboard.setOne_time(true);
+        keyboard.setInline(true);
         final List<Button[]> buttons = new ArrayList<>();
+        List<MenuItem> menuItems = item.getChildren();
 
-        for (MenuItem menuItem : item.getChildren()) {
+        for (MenuItem menuItem : menuItems) {
             buttons.add(new Button[]{
                     new Button(
                             "secondary",
@@ -188,18 +188,21 @@ public class DefaultMessageService implements MessageService {
             });
         }
         // Adding control buttons
-        buttons.add(
-                new Button[]{
-                        new Button(
-                                "primary",
-                                new TextAction(ControlButton.BACK, String.valueOf(item.getId()))
-                        ),
-                        new Button(
-                                "secondary",
-                                new TextAction(ControlButton.HOME, "")
-                        )
-                }
-        );
+        if (item.getParent() != null) {
+            buttons.add(
+                    new Button[]{
+                            new Button(
+                                    "primary",
+                                    new TextAction(ControlButton.BACK, String.valueOf(item.getId()))
+                            ),
+                            new Button(
+                                    "secondary",
+                                    new TextAction(ControlButton.HOME, "")
+                            )
+                    }
+            );
+        }
+
 
         keyboard.setButtons(buttons);
         return keyboard;
