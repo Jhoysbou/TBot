@@ -72,7 +72,7 @@ const showErrorAlert = (text) => {
         SUCCESS_ALERT.style.display = "block";
         ERROR_ALERT.style.display = 'none';
         ERROR_ALERT.innerText = ""
-    }, 1000);
+    }, 2000);
 }
 
 const goBack = () => {
