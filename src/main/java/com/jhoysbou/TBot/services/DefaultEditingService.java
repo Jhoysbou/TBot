@@ -43,20 +43,19 @@ public class DefaultEditingService implements EditingService {
         responseText.ifPresent(response -> {
             var menuItem = storage.getMenuById(id).orElseThrow(NoSuchElementException::new);
             var hashtag = hashtagParser.parse(responseText);
-            if (hashtag.isPresent()) {
-//          Changing topic names is not supported. News topics can only be created or deleted
-//          If trigger and response strings are empty it means that menuItem has been created recently
-//          therefore we should create topic in NewsPreferenceStorage, otherwise throwing exception.
+
+            hashtag.ifPresent(tag -> {
+//              Changing topic names is not supported. News topics can only be created or deleted
+//              therefore we should create topic in NewsPreferenceStorage, otherwise throwing exception.
                 if (menuItem.getTrigger().equals("") && menuItem.getResponseText().equals("")) {
-                    var tag = hashtag.get();
-//                Do not save service tags
+//                  Do not save service tags
                     if (!tag.equals(ServicePreferenceTag.ALL) && !tag.equals(ServicePreferenceTag.NONE)) {
                         subscriptionStorage.addNewPreference(hashtag.get());
                     }
                 } else {
                     throw new UnsupportedOperationException("Changing topic names is not supported");
                 }
-            }
+            });
         });
         if (trigger.isPresent() && responseText.isPresent()) {
             storage.updateMenuItem(id, trigger.get(), responseText.get());

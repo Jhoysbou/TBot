@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 @Component
 public class RegexHashtagParser implements HashtagParser {
-    private final Pattern hashtagPattern = Pattern.compile("\\B(\\#[a-zA-Z]+\\b)(?!;)");
+    private final Pattern hashtagPattern = Pattern.compile("\\B(\\#[a-zA-Zа-яА-Я]+\\b)(?!;)");
 
     @Override
     public Optional<String> parse(Optional<String> text) {
