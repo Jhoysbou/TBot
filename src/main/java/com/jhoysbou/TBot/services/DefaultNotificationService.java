@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class DefaultNotificationService implements NotificationService {
     private static final Logger log = LoggerFactory.getLogger(DefaultNotificationService.class);
     private static final short ITEMS_COUNT = 200;
-    private static final int MAX_PEERS_COUNT = 10;
+    private static final int MAX_PEERS_COUNT = 100;
 
     private final IdStorage<Long> userIdStorage;
     private final GroupApi api;
@@ -122,7 +122,7 @@ public class DefaultNotificationService implements NotificationService {
         try {
             var peerList = new ArrayList<>(peers);
 
-            for (int length = peers.size(), i = 0, topIndex = MAX_PEERS_COUNT;
+            for (int length = peers.size(), i = 0, topIndex = Math.min((i + MAX_PEERS_COUNT), length);
                  i < length;
                  i += MAX_PEERS_COUNT,
                          topIndex = Math.min((i + MAX_PEERS_COUNT), length)) {
