@@ -163,8 +163,8 @@ public class DefaultMessageService implements MessageService {
                 .map(MenuItem::getTrigger)
                 .reduce((acc, cur) -> acc + ", " + cur)
                 .ifPresentOrElse(
-                        mergedTopics -> topics.set("Сейчас ты подписан на " + mergedTopics),
-                        () -> topics.set("Пока ты ни на что не подписан(")
+                        mergedTopics -> topics.set("Вы подписны на категории: " + mergedTopics),
+                        () -> topics.set("Пока вы ни на что не подписаны \uD83D\uDE14")
                 );
 
 //      Checking tag to print all user's subscriptions
