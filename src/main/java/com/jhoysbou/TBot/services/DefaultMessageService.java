@@ -5,6 +5,7 @@ import com.jhoysbou.TBot.models.MenuItem;
 import com.jhoysbou.TBot.models.Message;
 import com.jhoysbou.TBot.models.vkmodels.*;
 import com.jhoysbou.TBot.services.VkApi.GroupApi;
+import com.jhoysbou.TBot.storages.IdStorage;
 import com.jhoysbou.TBot.storages.MenuStorage;
 import com.jhoysbou.TBot.storages.TopicStorage;
 import com.jhoysbou.TBot.utils.HashtagParser;
@@ -25,16 +26,18 @@ public class DefaultMessageService implements MessageService {
 
     private final GroupApi api;
     private final MenuStorage menuStorage;
+    private final IdStorage<Long> userIdStorage;
     private final HashtagParser hashtagParser;
     private final TopicStorage subscriptionStorage;
 
     @Autowired
     public DefaultMessageService(GroupApi api,
                                  @Qualifier(value = "consistentMenuStorage") MenuStorage menuStorage,
-                                 HashtagParser hashtagParser,
+                                 IdStorage<Long> userIdStorage, HashtagParser hashtagParser,
                                  TopicStorage subscriptionStorage) {
         this.api = api;
         this.menuStorage = menuStorage;
+        this.userIdStorage = userIdStorage;
         this.hashtagParser = hashtagParser;
         this.subscriptionStorage = subscriptionStorage;
     }
@@ -43,6 +46,10 @@ public class DefaultMessageService implements MessageService {
     public void handleMessage(GroupEventDAO<NewMessageWrapper> event) {
         final MessageDAO message = event.getObject().getMessage();
         final long peer = message.getFrom_id();
+
+//        Save user id for important notifications
+        saveUserId(peer);
+
         final String text = message.getText().toLowerCase(Locale.ROOT);
 
         Optional<MenuItem> menuItem = menuStorage.getMenuByText(text);
@@ -103,7 +110,7 @@ public class DefaultMessageService implements MessageService {
                         List.of(userId)
                 );
             });
-        } else if (subscriptionStorage.getByTag(hashtag).contains(userId)) {
+        } else if (subscriptionStorage.getByTag(hashtag).orElse(new HashSet<>()).contains(userId)) {
             subscriptionStorage.deletePreferenceFromUser(hashtag, userId);
             menuItem.ifPresent(item -> {
                 sendMessage(
@@ -206,6 +213,10 @@ public class DefaultMessageService implements MessageService {
 
         keyboard.setButtons(buttons);
         return keyboard;
+    }
+
+    private void saveUserId(long userId) {
+        userIdStorage.addId(userId);
     }
 
     private static class ControlButton {

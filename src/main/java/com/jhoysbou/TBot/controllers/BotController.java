@@ -51,7 +51,7 @@ public class BotController {
                         new TypeReference<GroupEventDAO<WallPostDAO>>() {
                         }
                 );
-                notificationService.sendNotification(event);
+                notificationService.handleEvent(event);
                 log.debug("all good");
             }
             case message_new -> {

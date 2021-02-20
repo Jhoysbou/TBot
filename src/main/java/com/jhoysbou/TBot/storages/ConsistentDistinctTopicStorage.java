@@ -34,8 +34,8 @@ public class ConsistentDistinctTopicStorage implements TopicStorage, Closeable {
     }
 
     @Override
-    public Set<Long> getByTag(String tag) {
-        return storage.get(tag);
+    public Optional<Set<Long>> getByTag(String tag) {
+        return Optional.ofNullable(storage.get(tag));
     }
 
     @Override
@@ -61,13 +61,15 @@ public class ConsistentDistinctTopicStorage implements TopicStorage, Closeable {
 
     @Override
     public void addPreferenceToUser(String tag, long userId) {
-        var users = getByTag(tag);
-        users.add(userId);
-        try {
-            save();
-        } catch (IOException e) {
-            log.error("Couldn't save newsPreference!", e);
-        }
+        var usersOpt = getByTag(tag);
+        usersOpt.ifPresent(users -> {
+            users.add(userId);
+            try {
+                save();
+            } catch (IOException e) {
+                log.error("Couldn't save newsPreference!", e);
+            }
+        });
     }
 
     @Override

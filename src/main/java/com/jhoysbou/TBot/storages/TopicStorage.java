@@ -1,10 +1,11 @@
 package com.jhoysbou.TBot.storages;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public interface TopicStorage {
-    Set<Long> getByTag(final String tag);
+    Optional<Set<Long>> getByTag(final String tag);
 
     List<String> getTopicsByUser(final long userId);
 
