@@ -54,6 +54,12 @@ public class VKApi implements GroupApi {
         return response.body();
     }
 
+    /**
+     * @param message
+     * @param peers no more than 100
+     * @throws IOException
+     * @throws InterruptedException
+     */
     @Override
     public void sendMessage(Message message, List<Long> peers) throws IOException, InterruptedException {
 

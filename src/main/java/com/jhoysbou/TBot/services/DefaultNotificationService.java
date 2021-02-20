@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +24,8 @@ import java.util.stream.Collectors;
 @Service
 public class DefaultNotificationService implements NotificationService {
     private static final Logger log = LoggerFactory.getLogger(DefaultNotificationService.class);
-    private static final short ITEMS_COUNT = 10;
+    private static final short ITEMS_COUNT = 200;
+    private static final int MAX_PEERS_COUNT = 10;
 
     private final IdStorage<Long> userIdStorage;
     private final GroupApi api;
@@ -120,7 +120,16 @@ public class DefaultNotificationService implements NotificationService {
         );
 
         try {
-            api.sendMessage(message, new ArrayList<>(peers));
+            var peerList = new ArrayList<>(peers);
+
+            for (int length = peers.size(), i = 0, topIndex = MAX_PEERS_COUNT;
+                 i < length;
+                 i += MAX_PEERS_COUNT,
+                         topIndex = Math.min((i + MAX_PEERS_COUNT), length)) {
+                api.sendMessage(message, peerList.subList(i, topIndex));
+            }
+
+
         } catch (IOException | InterruptedException e) {
             log.error("Couldn't send notification");
         }
