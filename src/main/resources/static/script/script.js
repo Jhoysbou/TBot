@@ -9,10 +9,12 @@ const updateItem = () => {
     let url = new URL(window.location.href);
     let params = new URLSearchParams(url.search);
     params.set("trigger", buttonText);
-    params.set("responseText", responseText);
     url.href = url.protocol + url.host + "/tbot/edit";
     url.search = params.toString();
-    fetch(url.toString(), {method: "POST"})
+    fetch(url.toString(), {
+        method: "POST",
+        body: responseText,
+    })
         .then(response => {
             debugger
             if (response.ok) {
@@ -72,7 +74,7 @@ const showErrorAlert = (text) => {
         SUCCESS_ALERT.style.display = "block";
         ERROR_ALERT.style.display = 'none';
         ERROR_ALERT.innerText = ""
-    }, 2000);
+    }, 5000);
 }
 
 const goBack = () => {
