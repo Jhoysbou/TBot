@@ -12,6 +12,10 @@ public class Message {
     public Message() {
     }
 
+    public Message(String text) {
+        this.text = text;
+    }
+
     public Message(String text, KeyboardDAO keyboard) {
         this.text = text;
         this.keyboard = keyboard;

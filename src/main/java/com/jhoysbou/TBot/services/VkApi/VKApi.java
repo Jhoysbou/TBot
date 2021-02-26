@@ -18,6 +18,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Component
 public class VKApi implements GroupApi {
@@ -56,7 +57,7 @@ public class VKApi implements GroupApi {
 
     /**
      * @param message
-     * @param peers no more than 100
+     * @param peers   no more than 100
      * @throws IOException
      * @throws InterruptedException
      */
@@ -69,32 +70,35 @@ public class VKApi implements GroupApi {
                 + "&random_id=" + System.currentTimeMillis()
                 + "&v=" + API_VERSION;
 
+        String body = "";
         if (message.hasAttachment()) {
             var attachments = message.getAttachments();
-            uri += "&attachment=" + attachments.stream()
+            body += "&attachment=" + attachments.stream()
                     .map(attachment -> attachment.getType() + attachment.getOwner_id() + "_" + attachment.getMedia_id())
                     .reduce((acc, cur) -> acc + "," + cur)
                     .get();
         }
 
         if (message.hasText()) {
-            uri += "&message=" + URLEncoder.encode(message.getText(), StandardCharsets.UTF_8);
+            body += "&message=" + URLEncoder.encode(message.getText(), StandardCharsets.UTF_8);
         }
 
         if (message.hasKeyboard()) {
             ObjectWriter ow = new ObjectMapper().writer();
-            uri += "&keyboard=" + URLEncoder.encode(ow.writeValueAsString(message.getKeyboard()), StandardCharsets.UTF_8);
+            body += "&keyboard=" + URLEncoder.encode(ow.writeValueAsString(message.getKeyboard()), StandardCharsets.UTF_8);
         }
 
 //        encode url
         uri = uri.replace(" ", "+");
 
         HttpRequest request = HttpRequest.newBuilder()
+                .POST(HttpRequest.BodyPublishers.ofString(body))
                 .uri(URI.create(uri))
-                .GET()
+                .header("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8")
                 .build();
-        HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        log.info("message send response body is {} ", response.body());
+
+        CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
+        response.thenAccept(r -> log.info("message send response body is {} ", r.body()));
     }
 
 }
