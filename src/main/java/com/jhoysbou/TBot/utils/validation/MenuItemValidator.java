@@ -15,7 +15,7 @@ public class MenuItemValidator implements Validator<MenuItem> {
             throw new ValidationException("This field cannot be longer than 40 characters. Current length "
                     + triggerLength);
         } else if (triggerLength == 0) {
-            throw new ValidationException("This field cannot be empty");
+            throw new ValidationException("Button text cannot be empty");
         } else if (menuItem.getParent() != null && menuItem.getChildren().size() > 5) {
             throw new ValidationException("You cannot create more than 5 elements");
         } else if (menuItem.getParent() == null && menuItem.getChildren().size() > 6) {

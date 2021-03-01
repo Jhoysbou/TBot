@@ -15,9 +15,9 @@ public interface MenuStorage {
 
     MenuItem updateMenuItem(final long id, final String trigger, final String responseText) throws NoSuchElementException, ValidationException;
 
-    MenuItem updateMenuItemTrigger(final long id, final String trigger) throws NoSuchElementException;
+    MenuItem updateMenuItemTrigger(final long id, final String trigger) throws NoSuchElementException, ValidationException;
 
-    MenuItem updateMenuItemResponse(final long id, final String responseText) throws NoSuchElementException;
+    MenuItem updateMenuItemResponse(final long id, final String responseText) throws NoSuchElementException, ValidationException;
 
     Optional<MenuItem> getMenuByText(final String text);
 

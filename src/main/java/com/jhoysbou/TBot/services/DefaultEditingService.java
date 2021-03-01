@@ -59,9 +59,10 @@ public class DefaultEditingService implements EditingService {
         });
         if (trigger.isPresent() && responseText.isPresent()) {
             storage.updateMenuItem(id, trigger.get(), responseText.get());
-        } else {
-            trigger.ifPresent(s -> storage.updateMenuItemTrigger(id, s));
-            responseText.ifPresent(s -> storage.updateMenuItemResponse(id, s));
+        } else if (trigger.isPresent()) {
+            storage.updateMenuItemTrigger(id, trigger.get());
+        } else if (responseText.isPresent()) {
+            storage.updateMenuItemResponse(id, responseText.get());
         }
     }
 

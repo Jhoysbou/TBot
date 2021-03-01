@@ -112,10 +112,10 @@ public class ConsistentMenuStorage implements MenuStorage {
     public MenuItem updateMenuItem(long id,
                                    String trigger,
                                    String responseText) throws NoSuchElementException, ValidationException {
+        validator.validate(new MenuItem(trigger, responseText));
+
         final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
         MenuAttachmentsDto attachments = attachmentExtractor.parse(responseText);
-
-        validator.validate(new MenuItem(trigger, responseText));
 
         item.setAttachments(attachments);
         item.setTrigger(trigger);
@@ -130,8 +130,10 @@ public class ConsistentMenuStorage implements MenuStorage {
     }
 
     @Override
-    public MenuItem updateMenuItemTrigger(long id, String trigger) throws NoSuchElementException {
+    public MenuItem updateMenuItemTrigger(long id, String trigger) throws NoSuchElementException, ValidationException {
+        validator.validate(new MenuItem(trigger, ""));
         final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
+
         item.setTrigger(trigger);
         try {
             save();
@@ -143,7 +145,9 @@ public class ConsistentMenuStorage implements MenuStorage {
     }
 
     @Override
-    public MenuItem updateMenuItemResponse(long id, String responseText) throws NoSuchElementException {
+    public MenuItem updateMenuItemResponse(long id, String responseText) throws NoSuchElementException, ValidationException {
+        validator.validate(new MenuItem("", responseText));
+
         final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
         MenuAttachmentsDto attachments = attachmentExtractor.parse(responseText);
         item.setAttachments(attachments);
