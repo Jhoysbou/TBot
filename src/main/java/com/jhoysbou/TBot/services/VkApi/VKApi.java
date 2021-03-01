@@ -68,6 +68,7 @@ public class VKApi implements GroupApi {
                 + "messages.send?access_token=" + ACCESS_TOKEN
                 + "&peer_ids=" + peers.stream().distinct().map(String::valueOf).reduce((acc, id) -> acc + "," + id).orElse("")
                 + "&random_id=" + System.currentTimeMillis()
+                + "&dont_parse_links=1"
                 + "&v=" + API_VERSION;
 
         String body = "";
