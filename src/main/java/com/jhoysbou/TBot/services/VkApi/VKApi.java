@@ -18,7 +18,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
+
 
 @Component
 public class VKApi implements GroupApi {
@@ -98,8 +98,8 @@ public class VKApi implements GroupApi {
                 .header("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8")
                 .build();
 
-        CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
-        response.thenAccept(r -> log.info("message send response body is {} ", r.body()));
+//        CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
+//        response.thenAccept(r -> log.info("message send response body is {} ", r.body()));
     }
 
 }
