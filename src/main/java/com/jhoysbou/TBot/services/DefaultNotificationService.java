@@ -58,7 +58,7 @@ public class DefaultNotificationService implements NotificationService {
                     .collect(Collectors.toList());
 
             final long conversationCount = conversations.getCount();
-            log.info("conversationCount = {}, items = {}", conversationCount, conversations.getItems());
+            log.debug("conversationCount = {}, items = {}", conversationCount, conversations.getItems());
 
             if (conversationCount > ITEMS_COUNT) {
                 for (long offset = ITEMS_COUNT; offset <= conversationCount; offset += ITEMS_COUNT) {
