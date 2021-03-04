@@ -97,7 +97,7 @@ public class VKApi implements GroupApi {
                 .uri(URI.create(uri))
                 .header("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8")
                 .build();
-
+        log.debug("message sent");
 //        CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
 //        response.thenAccept(r -> log.info("message send response body is {} ", r.body()));
     }
