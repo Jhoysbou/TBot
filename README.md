@@ -28,6 +28,7 @@ There are some service tags:
 - `#all` – User will be subscribed to all topics.
 - `#none` - User will be unsubscribed from all topics.
 - `{topics}` – This special tag will print all user's subscriptions.
+- `[SOME_LINK_WITH_HTTS]` - Will create a button-link. If pressed a user will be directed to a link inside brackets (`[` and `]`)
 
 The system has a limitation – a name of a topic cannot be changed as well as a tag itself.
 You must delete and create a new topic to change it. With topic deletion the users' subscriptions
