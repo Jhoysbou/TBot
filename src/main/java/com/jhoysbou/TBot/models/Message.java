@@ -1,6 +1,6 @@
 package com.jhoysbou.TBot.models;
 
-import com.jhoysbou.TBot.models.vkmodels.KeyboardDAO;
+import com.jhoysbou.TBot.models.vkmodels.keyboard.KeyboardDAO;
 
 import java.util.List;
 

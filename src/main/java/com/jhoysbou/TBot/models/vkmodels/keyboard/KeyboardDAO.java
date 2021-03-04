@@ -1,4 +1,6 @@
-package com.jhoysbou.TBot.models.vkmodels;
+package com.jhoysbou.TBot.models.vkmodels.keyboard;
+
+import com.jhoysbou.TBot.models.vkmodels.keyboard.Button;
 
 import java.util.List;
 

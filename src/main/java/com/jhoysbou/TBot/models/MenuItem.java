@@ -9,6 +9,7 @@ public class MenuItem {
     private long id;
     private List<MenuItem> children = new ArrayList<>();
     private MenuAttachmentsDto attachments;
+    private String url = "";
     @JsonIgnore
     private MenuItem parent;
     private String trigger;
@@ -30,9 +31,20 @@ public class MenuItem {
         this.responseText = responseText;
     }
 
-    public MenuItem(MenuItem parent, String trigger) {
+    public MenuItem(long id, String url, MenuItem parent, String trigger, String responseText) {
+        this.id = id;
+        this.url = url;
         this.parent = parent;
         this.trigger = trigger;
+        this.responseText = responseText;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public long getId() {

@@ -5,6 +5,7 @@ import com.jhoysbou.TBot.models.MenuAttachmentsDto;
 import com.jhoysbou.TBot.models.MenuItem;
 import com.jhoysbou.TBot.models.MenuItemStorageDto;
 import com.jhoysbou.TBot.utils.AttachmentExtractor;
+import com.jhoysbou.TBot.utils.OpenLinkExtractor;
 import com.jhoysbou.TBot.utils.validation.ValidationException;
 import com.jhoysbou.TBot.utils.validation.Validator;
 import org.slf4j.Logger;
@@ -28,16 +29,20 @@ public class ConsistentMenuStorage implements MenuStorage {
     private final String PATH;
     private final MenuItem root;
     private final AttachmentExtractor attachmentExtractor;
+    private final OpenLinkExtractor linkExtractor;
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final Validator<MenuItem> validator;
 
     @Autowired
     public ConsistentMenuStorage(@Value("${menu.storage.path}") String path,
                                  AttachmentExtractor attachmentExtractor,
+                                 OpenLinkExtractor linkExtractor,
                                  Validator<MenuItem> validator) throws IOException {
 
         this.attachmentExtractor = attachmentExtractor;
+        this.linkExtractor = linkExtractor;
         this.validator = validator;
+
         File file = Paths.get(path).toFile();
         if (file.exists()) {
             MenuItemStorageDto dto = objectMapper.readValue(file, MenuItemStorageDto.class);
@@ -116,9 +121,11 @@ public class ConsistentMenuStorage implements MenuStorage {
 
         final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
         MenuAttachmentsDto attachments = attachmentExtractor.parse(responseText);
+        var link = linkExtractor.extract(responseText);
 
         item.setAttachments(attachments);
         item.setTrigger(trigger);
+        item.setUrl(link.orElse(""));
         item.setResponseText(responseText);
 
         try {
@@ -150,7 +157,11 @@ public class ConsistentMenuStorage implements MenuStorage {
 
         final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
         MenuAttachmentsDto attachments = attachmentExtractor.parse(responseText);
+        var link  = linkExtractor.extract(responseText);
         item.setAttachments(attachments);
+        item.setResponseText(responseText);
+        item.setUrl(link.orElse(""));
+
         try {
             save();
         } catch (IOException e) {

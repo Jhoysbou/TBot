@@ -27,7 +27,8 @@ public class BotController {
     private final String confirmationCode;
 
     @Autowired
-    public BotController(NotificationService notificationService, MessageService messageService,
+    public BotController(NotificationService notificationService,
+                         MessageService messageService,
                          @Value("${vk.group.confirmationCode}") String confirmationCode) {
         this.notificationService = notificationService;
         this.messageService = messageService;

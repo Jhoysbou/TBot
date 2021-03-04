@@ -3,7 +3,10 @@ package com.jhoysbou.TBot.services;
 import com.jhoysbou.TBot.models.MenuAttachmentsDto;
 import com.jhoysbou.TBot.models.MenuItem;
 import com.jhoysbou.TBot.models.Message;
-import com.jhoysbou.TBot.models.vkmodels.*;
+import com.jhoysbou.TBot.models.vkmodels.GroupEventDAO;
+import com.jhoysbou.TBot.models.vkmodels.MessageDAO;
+import com.jhoysbou.TBot.models.vkmodels.NewMessageWrapper;
+import com.jhoysbou.TBot.models.vkmodels.keyboard.*;
 import com.jhoysbou.TBot.services.VkApi.GroupApi;
 import com.jhoysbou.TBot.storages.IdStorage;
 import com.jhoysbou.TBot.storages.MenuStorage;
@@ -84,7 +87,6 @@ public class DefaultMessageService implements MessageService {
             }
             sendMessage(parent, peer);
         } else {
-
             menuItem.ifPresent(item -> sendMessage(item, peer));
         }
     }
@@ -187,22 +189,31 @@ public class DefaultMessageService implements MessageService {
         List<MenuItem> menuItems = item.getChildren();
 
         for (MenuItem menuItem : menuItems) {
-            buttons.add(new Button[]{
-                    new Button(
-                            "secondary",
-                            new TextAction(menuItem.getTrigger(), "")
-                    )
-            });
+            Button button;
+
+            if (menuItem.getUrl().length() == 0) {
+                button = new ColoredButton(
+                        "secondary",
+                        new TextAction(menuItem.getTrigger(), "")
+                );
+            } else {
+                button = new Button(
+                        new OpenLinkAction(menuItem.getTrigger(), "", menuItem.getUrl())
+                );
+
+            }
+
+            buttons.add(new Button[]{button});
         }
         // Adding control buttons
         if (item.getParent() != null) {
             buttons.add(
                     new Button[]{
-                            new Button(
+                            new ColoredButton(
                                     "primary",
                                     new TextAction(ControlButton.BACK, String.valueOf(item.getId()))
                             ),
-                            new Button(
+                            new ColoredButton(
                                     "secondary",
                                     new TextAction(ControlButton.HOME, "")
                             )

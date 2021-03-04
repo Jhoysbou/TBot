@@ -1,17 +1,12 @@
-package com.jhoysbou.TBot.models.vkmodels;
+package com.jhoysbou.TBot.models.vkmodels.keyboard;
 
-public class TextAction {
-    private String type = "text";
+public abstract class ButtonAction {
     private String label;
     private String payload;
 
-    public TextAction(String label, String payload) {
+    public ButtonAction(String label, String payload) {
         this.label = label;
         this.payload = payload;
-    }
-
-    public String getType() {
-        return type;
     }
 
     public String getLabel() {
