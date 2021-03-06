@@ -52,7 +52,3 @@ No api clients, no databases and no external java libraries used for this projec
 Thymeleaf as a template engine. Spring Security was used for the authentication .\
 Bootstrap as a component library.\
 Minimal Java version – 14.
-
-
-
-
