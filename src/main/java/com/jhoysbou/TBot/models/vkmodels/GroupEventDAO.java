@@ -3,8 +3,17 @@ package com.jhoysbou.TBot.models.vkmodels;
 public class GroupEventDAO<T> {
     private String event_id;
     private String type;
+    private String v;
     private String group_id;
     private T object;
+
+    public String getV() {
+    	return v;
+    }
+
+    public void setV(String v) {
+    	this.v = v;
+    }
 
     public String getEvent_id() {
         return event_id;
