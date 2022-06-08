@@ -10,6 +10,11 @@ name: Gradle Package
 on:
   pull_request:
     branches: [ master ]
+  push:
+    branches:
+      - 'master'
+    tags:
+      - '*'
   release:
     types: [created]
 env:
@@ -88,7 +93,10 @@ jobs:
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
           tags: |
-            type=raw,value=latest
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=ref,event=pr
+            type=edge,branch=master
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: Build and push Docker image
