@@ -53,6 +53,24 @@ Thymeleaf as a template engine. Spring Security was used for the authentication 
 Bootstrap as a component library.\
 Minimal Java version – 14.
 
+# Example of config file\
+
+```
+vk.access.key=
+vk.group.confirmationCode=
+tbot.notification.tag=#notify
+notification.important.tag=\u0023\u0432\u0430\u0436\u043d\u043e\u0435\u0412\u0428\u0422\u041c
+
+tbot.web.login=admin
+tbot.web.password=mysuperduperpassword
+```
+
+# Docker 
+
+Docker image usage:
+```shell
+docker run -v/path/to/persistent/storage:/storage -v/path/to/config/file/directory:/config <image-name>
+```
 
 
 
