@@ -28,6 +28,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// Mongodb
+	// https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver
+	implementation group: 'org.mongodb', name: 'mongo-java-driver', version: '3.12.11'
 }
 
 publishing {
