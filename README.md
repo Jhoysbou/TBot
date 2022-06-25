@@ -19,7 +19,7 @@ All information and the navigation structure has a consistent storage.
 ### Notification system
 ![](img/notification.png)
 The advanced customizable notification system based on tags.\
-Every post in a group with this bot will be searched for a tag – `#sciense`,
+Every post in a group with this bot will be searched for a tag – `#science`,
 for example – and if an existing tag was found, the bot will send to subscribed users a message with the post.
 To subscribe, a user must press a button with a tag in the `Response message` field.
 ![](img/example.png)
