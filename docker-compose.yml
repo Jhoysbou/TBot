@@ -1,0 +1,11 @@
+version: "3.3"  # optional since v1.27.0
+services:
+  tbot:
+    image: ghcr.io/jhoysbou/tbot:1.0
+    restart: always
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./config:/config
+      - ./storage:/storage
+
