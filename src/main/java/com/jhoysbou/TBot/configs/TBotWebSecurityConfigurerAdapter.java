@@ -38,6 +38,7 @@ public class TBotWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapt
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/api/v1/notification").permitAll()
+                .antMatchers(HttpMethod.GET, "/health").permitAll()
                 .anyRequest().hasRole("ADMIN")
                 .and()
                 .httpBasic();
