@@ -43,4 +43,5 @@ ngrok
 
 /logs/
 /src/test/resources/storage/
+/storage
 /*.json

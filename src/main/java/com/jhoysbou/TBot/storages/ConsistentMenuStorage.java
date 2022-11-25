@@ -23,230 +23,298 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Component
-public class ConsistentMenuStorage implements MenuStorage {
-    private static final Logger log = LoggerFactory.getLogger(ConsistentMenuStorage.class);
-    private static long COUNTER = 0;
-    private final String PATH;
-    private final MenuItem root;
-    private final AttachmentExtractor attachmentExtractor;
-    private final OpenLinkExtractor linkExtractor;
-    private final ObjectMapper objectMapper = new ObjectMapper();
-    private final Validator<MenuItem> validator;
+public class ConsistentMenuStorage implements MenuStorageImproved {
+  private static final Logger log = LoggerFactory.getLogger(ConsistentMenuStorage.class);
+  private static long COUNTER = 0;
+  private final String PATH;
+  private final MenuItem root;
+  private final AttachmentExtractor attachmentExtractor;
+  private final OpenLinkExtractor linkExtractor;
+  private final ObjectMapper objectMapper = new ObjectMapper();
+  private final Validator<MenuItem> validator;
 
-    @Autowired
-    public ConsistentMenuStorage(@Value("${menu.storage.path}") String path,
-                                 AttachmentExtractor attachmentExtractor,
-                                 OpenLinkExtractor linkExtractor,
-                                 Validator<MenuItem> validator) throws IOException {
+  @Autowired
+  public ConsistentMenuStorage(@Value("${menu.storage.path}") String path,
+      AttachmentExtractor attachmentExtractor,
+      OpenLinkExtractor linkExtractor,
+      Validator<MenuItem> validator) throws IOException {
 
-        this.attachmentExtractor = attachmentExtractor;
-        this.linkExtractor = linkExtractor;
-        this.validator = validator;
+    this.attachmentExtractor = attachmentExtractor;
+    this.linkExtractor = linkExtractor;
+    this.validator = validator;
 
-        File file = Paths.get(path).toFile();
-        if (file.exists()) {
-            MenuItemStorageDto dto = objectMapper.readValue(file, MenuItemStorageDto.class);
-            root = restoreParents(dto.getMenuItem(), null);
-            COUNTER = dto.getId();
-        } else {
-            var responseText = "Привет!";
-            root = new MenuItem(
-                    COUNTER++,
-                    null,
-                    "start",
-                    responseText
-            );
-            root.setAttachments(attachmentExtractor.parse(responseText));
-        }
-
-        PATH = path;
+    File file = Paths.get(path).toFile();
+    if (file.exists()) {
+      MenuItemStorageDto dto = objectMapper.readValue(file, MenuItemStorageDto.class);
+      root = restoreParents(dto.getMenuItem(), null);
+      COUNTER = dto.getId();
+    } else {
+      var responseText = "Привет!";
+      root = new MenuItem(
+          COUNTER++,
+          null,
+          "start",
+          responseText);
+      root.setAttachments(attachmentExtractor.parse(responseText));
     }
 
-    @PreDestroy
-    void close() {
-        try {
-            save();
-        } catch (IOException e) {
-            log.error("Couldn't save storage before destroy!", e);
-        }
+    PATH = path;
+  }
+
+  @PreDestroy
+  void close() {
+    try {
+      save();
+    } catch (IOException e) {
+      log.error("Couldn't save storage before destroy!", e);
+    }
+  }
+
+  @Override
+  public MenuItem createMenuItem(Optional<MenuItem> parent,
+      String trigger,
+      String responseText,
+      Boolean isSubscriptionRequired)
+      throws ValidationException {
+
+    MenuItem parentItem = root;
+    if (parent.isPresent()) {
+      parentItem = parent.get();
     }
 
-    @Override
-    public MenuItem createMenuItem(Optional<MenuItem> parent, String trigger, String responseText) throws ValidationException {
-        MenuItem parentItem = root;
-        if (parent.isPresent()) {
-            parentItem = parent.get();
-        }
-
-        final MenuItem item = new MenuItem(COUNTER++, parentItem, trigger, responseText);
-        MenuAttachmentsDto attachments = attachmentExtractor.parse(responseText);
-        item.setAttachments(attachments);
-        parentItem.getChildren().add(item);
-        try {
-            validator.validate(parentItem);
-        } catch (ValidationException e) {
-            parentItem.getChildren().remove(item);
-            throw e;
-        }
-
-        try {
-            save();
-        } catch (IOException e) {
-            log.error("Couldn't save menu items!", e);
-        }
-
-        return item;
+    final MenuItem item = new MenuItem(COUNTER++, parentItem, trigger, responseText, isSubscriptionRequired);
+    MenuAttachmentsDto attachments = attachmentExtractor.parse(responseText);
+    item.setAttachments(attachments);
+    parentItem.getChildren().add(item);
+    try {
+      validator.validate(parentItem);
+    } catch (ValidationException e) {
+      parentItem.getChildren().remove(item);
+      throw e;
     }
 
-    @Override
-    public MenuItem getRoot() {
-        return root;
+    try {
+      save();
+    } catch (IOException e) {
+      log.error("Couldn't save menu items!", e);
     }
 
-    @Override
-    public void deleteMenuItem(MenuItem item) {
-        item.getParent().getChildren().remove(item);
-        try {
-            save();
-        } catch (IOException e) {
-            log.error("Couldn't save menu items!", e);
-        }
+    return item;
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.jhoysbou.TBot.storages.MenuStorage#createMenuItem(java.util.Optional,
+   * java.lang.String, java.lang.String)
+   *
+   * Method to be deleted
+   */
+  @Deprecated
+  @Override
+  public MenuItem createMenuItem(Optional<MenuItem> parent,
+      String trigger,
+      String responseText)
+      throws ValidationException {
+
+    MenuItem parentItem = root;
+    if (parent.isPresent()) {
+      parentItem = parent.get();
     }
 
-    @Override
-    public MenuItem updateMenuItem(long id,
-                                   String trigger,
-                                   String responseText) throws NoSuchElementException, ValidationException {
-        validator.validate(new MenuItem(trigger, responseText));
-
-        final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
-        MenuAttachmentsDto attachments = attachmentExtractor.parse(responseText);
-        var link = linkExtractor.extract(responseText);
-
-        item.setAttachments(attachments);
-        item.setTrigger(trigger);
-        item.setUrl(link.orElse(""));
-        item.setResponseText(responseText);
-
-        try {
-            save();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return item;
+    final MenuItem item = new MenuItem(COUNTER++, parentItem, trigger, responseText);
+    MenuAttachmentsDto attachments = attachmentExtractor.parse(responseText);
+    item.setAttachments(attachments);
+    parentItem.getChildren().add(item);
+    try {
+      validator.validate(parentItem);
+    } catch (ValidationException e) {
+      parentItem.getChildren().remove(item);
+      throw e;
     }
 
-    @Override
-    public MenuItem updateMenuItemTrigger(long id, String trigger) throws NoSuchElementException, ValidationException {
-        validator.validate(new MenuItem(trigger, ""));
-        final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
-
-        item.setTrigger(trigger);
-        try {
-            save();
-        } catch (IOException e) {
-            log.error("Couldn't save menu items!", e);
-        }
-        return item;
-
+    try {
+      save();
+    } catch (IOException e) {
+      log.error("Couldn't save menu items!", e);
     }
 
-    @Override
-    public MenuItem updateMenuItemResponse(long id, String responseText) throws NoSuchElementException, ValidationException {
-        validator.validate(new MenuItem("", responseText));
+    return item;
+  }
 
-        final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
-        MenuAttachmentsDto attachments = attachmentExtractor.parse(responseText);
-        var link  = linkExtractor.extract(responseText);
-        item.setAttachments(attachments);
-        item.setResponseText(responseText);
-        item.setUrl(link.orElse(""));
+  @Override
+  public MenuItem getRoot() {
+    return root;
+  }
 
-        try {
-            save();
-        } catch (IOException e) {
-            log.error("Couldn't save menu items!", e);
-        }
-        return item;
+  @Override
+  public void deleteMenuItem(MenuItem item) {
+    item.getParent().getChildren().remove(item);
+    try {
+      save();
+    } catch (IOException e) {
+      log.error("Couldn't save menu items!", e);
+    }
+  }
+
+  @Override
+  public MenuItem updateMenuItem(long id,
+      Optional<String> trigger,
+      Optional<String> responseText,
+      Optional<Boolean> isSubscriptionRequired) throws NoSuchElementException, ValidationException {
+    String triggerCleared = trigger.orElse("");
+    String responseTextCleared = responseText.orElse("");
+
+    validator.validate(new MenuItem(triggerCleared, responseTextCleared));
+
+    final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
+    MenuAttachmentsDto attachments = attachmentExtractor.parse(responseTextCleared);
+    var link = linkExtractor.extract(responseTextCleared);
+
+    item.setAttachments(attachments);
+    item.setTrigger(triggerCleared);
+    item.setUrl(link.orElse(""));
+    item.setResponseText(responseTextCleared);
+
+    return null;
+  }
+
+  @Deprecated
+  @Override
+  public MenuItem updateMenuItem(long id,
+      String trigger,
+      String responseText) throws NoSuchElementException, ValidationException {
+    validator.validate(new MenuItem(trigger, responseText));
+
+    final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
+    MenuAttachmentsDto attachments = attachmentExtractor.parse(responseText);
+    var link = linkExtractor.extract(responseText);
+
+    item.setAttachments(attachments);
+    item.setTrigger(trigger);
+    item.setUrl(link.orElse(""));
+    item.setResponseText(responseText);
+
+    try {
+      save();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return item;
+  }
+
+  @Deprecated
+  @Override
+  public MenuItem updateMenuItemTrigger(long id, String trigger) throws NoSuchElementException, ValidationException {
+    final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
+    validator.validate(new MenuItem(trigger, ""));
+
+    item.setTrigger(trigger);
+    try {
+      save();
+    } catch (IOException e) {
+      log.error("Couldn't save menu items!", e);
+    }
+    return item;
+
+  }
+
+  @Deprecated
+  @Override
+  public MenuItem updateMenuItemResponse(long id, String responseText)
+      throws NoSuchElementException, ValidationException {
+    validator.validate(new MenuItem("", responseText));
+
+    final MenuItem item = getMenuById(id).orElseThrow(NoSuchElementException::new);
+    MenuAttachmentsDto attachments = attachmentExtractor.parse(responseText);
+    var link = linkExtractor.extract(responseText);
+    item.setAttachments(attachments);
+    item.setResponseText(responseText);
+    item.setUrl(link.orElse(""));
+
+    try {
+      save();
+    } catch (IOException e) {
+      log.error("Couldn't save menu items!", e);
+    }
+    return item;
+  }
+
+  @Override
+  public Optional<MenuItem> getMenuByText(String text) {
+    return find(root, text);
+  }
+
+  @Override
+  public Optional<MenuItem> getMenuByResponseText(String response) {
+    return findByResponse(root, response);
+  }
+
+  @Override
+  public Optional<MenuItem> getMenuById(long id) {
+    return find(root, id);
+  }
+
+  private Optional<MenuItem> find(final MenuItem currentItem, final long id) {
+    if (currentItem.getId() == id) {
+      return Optional.of(currentItem);
     }
 
-
-    @Override
-    public Optional<MenuItem> getMenuByText(String text) {
-        return find(root, text);
+    for (MenuItem item : currentItem.getChildren()) {
+      Optional<MenuItem> result = find(item, id);
+      if (result.isPresent()) {
+        return result;
+      }
     }
 
-    @Override
-    public Optional<MenuItem> getMenuByResponseText(String response) {
-        return findByResponse(root, response);
+    return Optional.empty();
+  }
+
+  // Case insensitive
+  private Optional<MenuItem> find(final MenuItem currentItem, final String text) {
+    if (currentItem.getTrigger().strip().toLowerCase(Locale.ROOT).equals(text.strip().toLowerCase(Locale.ROOT))) {
+      return Optional.of(currentItem);
     }
 
-    @Override
-    public Optional<MenuItem> getMenuById(long id) {
-        return find(root, id);
+    for (MenuItem item : currentItem.getChildren()) {
+
+      Optional<MenuItem> result = find(item, text);
+      if (result.isPresent()) {
+        return result;
+      }
     }
 
+    return Optional.empty();
+  }
 
-    private Optional<MenuItem> find(final MenuItem currentItem, final long id) {
-        if (currentItem.getId() == id) {
-            return Optional.of(currentItem);
-        }
-
-        for (MenuItem item : currentItem.getChildren()) {
-            Optional<MenuItem> result = find(item, id);
-            if (result.isPresent()) {
-                return result;
-            }
-        }
-
-
-        return Optional.empty();
+  private Optional<MenuItem> findByResponse(final MenuItem currentItem, final String text) {
+    if (currentItem.getResponseText().strip().toLowerCase(Locale.ROOT).equals(text.strip().toLowerCase(Locale.ROOT))) {
+      return Optional.of(currentItem);
     }
 
-    // Case insensitive
-    private Optional<MenuItem> find(final MenuItem currentItem, final String text) {
-        if (currentItem.getTrigger().strip().toLowerCase(Locale.ROOT).equals(text.strip().toLowerCase(Locale.ROOT))) {
-            return Optional.of(currentItem);
-        }
+    for (MenuItem item : currentItem.getChildren()) {
 
-        for (MenuItem item : currentItem.getChildren()) {
-
-            Optional<MenuItem> result = find(item, text);
-            if (result.isPresent()) {
-                return result;
-            }
-        }
-
-        return Optional.empty();
+      Optional<MenuItem> result = findByResponse(item, text);
+      if (result.isPresent()) {
+        return result;
+      }
     }
 
-    private Optional<MenuItem> findByResponse(final MenuItem currentItem, final String text) {
-        if (currentItem.getResponseText().strip().toLowerCase(Locale.ROOT).equals(text.strip().toLowerCase(Locale.ROOT))) {
-            return Optional.of(currentItem);
-        }
+    return Optional.empty();
+  }
 
-        for (MenuItem item : currentItem.getChildren()) {
+  private void save() throws IOException {
+    objectMapper.writeValue(Paths.get(PATH).toFile(), new MenuItemStorageDto(root, COUNTER));
+  }
 
-            Optional<MenuItem> result = findByResponse(item, text);
-            if (result.isPresent()) {
-                return result;
-            }
-        }
+  private MenuItem restoreParents(final MenuItem item, final MenuItem parent) {
+    item.setParent(parent);
 
-        return Optional.empty();
+    for (MenuItem i : item.getChildren()) {
+      restoreParents(i, item);
     }
-
-    private void save() throws IOException {
-        objectMapper.writeValue(Paths.get(PATH).toFile(), new MenuItemStorageDto(root, COUNTER));
-    }
-
-    private MenuItem restoreParents(final MenuItem item, final MenuItem parent) {
-        item.setParent(parent);
-
-        for (MenuItem i : item.getChildren()) {
-            restoreParents(i, item);
-        }
-        return item;
-    }
+    return item;
+  }
 
 }
