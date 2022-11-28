@@ -14,7 +14,7 @@ public class MenuItem {
   private MenuItem parent;
   private String trigger;
   private String responseText;
-  private Boolean isSubscriptionRequired;
+  private Boolean isSubscriptionRequired = false;
 
   public MenuItem() {
 
