@@ -4,7 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.jhoysbou.TBot.models.Message;
 import com.jhoysbou.TBot.models.vkmodels.ConversationWrapper;
+import com.jhoysbou.TBot.models.vkmodels.ResponseWrapper;
 import com.jhoysbou.TBot.services.VkApi.bodyhandlers.ConversationWrapperBodyHandler;
+import com.jhoysbou.TBot.services.VkApi.bodyhandlers.IsMemberBodyHandler;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,11 +30,14 @@ public class VKApi implements GroupApi {
   private final String ACCESS_TOKEN;
   private final HttpClient client;
   private final String API_VERSION;
+  private final String GROUP_ID;
 
   public VKApi(@Value("${vk.access.key}") String accessKey,
-      @Value("${vk.api.version}") String api_version) {
+      @Value("${vk.api.version}") String apiVersion,
+      @Value("${vk.group.id}") String groupId) {
     this.ACCESS_TOKEN = accessKey;
-    API_VERSION = api_version;
+    this.API_VERSION = apiVersion;
+    this.GROUP_ID = groupId;
     this.client = HttpClient.newHttpClient();
   }
 
@@ -103,8 +109,23 @@ public class VKApi implements GroupApi {
   }
 
   @Override
-  public boolean isMember(long userId) {
-    return true;
+  public boolean isMember(long userId) throws IOException, InterruptedException {
+    URI uri = URI.create(URL
+        + "groups.isMember?access_token=" + ACCESS_TOKEN
+        + "&user_id=" + String.valueOf(userId)
+        + "&group_id=" + this.GROUP_ID
+        + "&v=" + this.API_VERSION);
+
+    HttpRequest request = HttpRequest.newBuilder()
+        .uri(uri)
+        .GET()
+        .build();
+
+    HttpResponse<ResponseWrapper<Integer>> response = client.send(request, new IsMemberBodyHandler());
+
+    ResponseWrapper<Integer> isMemberResponse = response.body();
+
+    return isMemberResponse.getResponse() == 1;
   }
 
 }

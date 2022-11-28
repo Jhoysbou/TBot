@@ -21,6 +21,6 @@ public interface GroupApi {
 
   void sendMessage(final Message message, List<Long> peers) throws IOException, InterruptedException;
 
-  boolean isMember(final long userId);
+  boolean isMember(final long userId) throws IOException, InterruptedException;
 
 }
