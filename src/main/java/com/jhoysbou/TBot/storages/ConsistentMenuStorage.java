@@ -165,6 +165,7 @@ public class ConsistentMenuStorage implements MenuStorageImproved {
       Optional<Boolean> isSubscriptionRequired) throws NoSuchElementException, ValidationException {
     String triggerCleared = trigger.orElse("");
     String responseTextCleared = responseText.orElse("");
+    Boolean isSubscriptionRequiredCleared = isSubscriptionRequired.orElse(false);
 
     validator.validate(new MenuItem(triggerCleared, responseTextCleared));
 
@@ -176,6 +177,7 @@ public class ConsistentMenuStorage implements MenuStorageImproved {
     item.setTrigger(triggerCleared);
     item.setUrl(link.orElse(""));
     item.setResponseText(responseTextCleared);
+    item.setSubscriptionRequired(isSubscriptionRequiredCleared);
 
     return null;
   }

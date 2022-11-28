@@ -1,12 +1,13 @@
 buttonTextInput = document.getElementById("button_text_input");
 responseTextInput = document.getElementById("responseTextInput");
-isSubscriptionRequired =
-  document.querySelector('input[name="isSubReqRadio"]:checked').value ===
-  "true";
+isSubReqCheckBox = document.getElementById("isSubReq");
 SUCCESS_ALERT = document.getElementById("success_alert");
 ERROR_ALERT = document.getElementById("error_alert");
 
 const updateItem = () => {
+  const buttonText = buttonTextInput.value;
+  const responseText = responseTextInput.value;
+  const isSubscriptionRequired = isSubReqCheckBox.checked;
   let url = new URL(window.location.href);
   let params = new URLSearchParams(url.search);
   params.set("trigger", buttonText);
