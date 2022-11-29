@@ -8,11 +8,14 @@ import com.jhoysbou.TBot.models.vkmodels.ResponseWrapper;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodySubscriber;
+import java.net.http.HttpResponse.ResponseInfo;
 import java.nio.charset.StandardCharsets;
 
-public class ConversationWrapperBodyHandler implements HttpResponse.BodyHandler<ConversationWrapper> {
+public class IsMemberBodyHandler implements HttpResponse.BodyHandler<ResponseWrapper<Integer>> {
+
   @Override
-  public HttpResponse.BodySubscriber<ConversationWrapper> apply(HttpResponse.ResponseInfo responseInfo) {
+  public BodySubscriber<ResponseWrapper<Integer>> apply(ResponseInfo responseInfo) {
     HttpResponse.BodySubscriber<String> upstream = HttpResponse.BodySubscribers.ofString(StandardCharsets.UTF_8);
 
     return HttpResponse.BodySubscribers.mapping(
@@ -20,12 +23,10 @@ public class ConversationWrapperBodyHandler implements HttpResponse.BodyHandler<
         (String body) -> {
           try {
             ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper
-                .readValue(
-                    body,
-                    new TypeReference<ResponseWrapper<ConversationWrapper>>() {
-                    })
-                .getResponse();
+            return objectMapper.readValue(
+                body,
+                new TypeReference<ResponseWrapper<Integer>>() {
+                });
           } catch (IOException e) {
             throw new UncheckedIOException(e);
           }

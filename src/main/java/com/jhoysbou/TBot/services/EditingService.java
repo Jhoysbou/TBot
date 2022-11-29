@@ -6,15 +6,16 @@ import com.jhoysbou.TBot.utils.validation.ValidationException;
 import java.util.Optional;
 
 public interface EditingService {
-    MenuItem getRoot();
+  MenuItem getRoot();
 
-    MenuItem getMenuItemById(final long id);
+  MenuItem getMenuItemById(final long id);
 
-    void updateMenuItem(final long id,
-                        final Optional<String> trigger,
-                        final Optional<String> responseText) throws ValidationException;
+  void updateMenuItem(final long id,
+      final Optional<String> trigger,
+      final Optional<String> responseText,
+      final Optional<Boolean> isSubscriptionRequred) throws ValidationException;
 
-    void createNewMenuItem(final long parentId) throws ValidationException;
+  void createNewMenuItem(final long parentId) throws ValidationException;
 
-    void deleteMenuItem(final long id);
+  void deleteMenuItem(final long id);
 }
